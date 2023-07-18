@@ -21,12 +21,12 @@
         padding: 0;
         }
 
-        /* body {
+        .home-screen {
         background-image: url("https://i.ibb.co/pXBdfY1/bg.jpg");
         background-size: cover;
         overflow: hidden;
         height: 100vh;
-        } */
+        } 
 
         
         .feature {
@@ -242,7 +242,8 @@
     </style>
 </head>
 <body>
-    <div class="home-html">
+    <div class="home-screen" id="home-html"></div>
+    <div class="about-html" style="display: none;" id="about-html">
         <header class="py-0 bg-dark text-light">
             <div class="container px-5 pb-5">
                 <div class="row gx-5 align-items-center">
@@ -394,13 +395,179 @@
                             </div>
                         </div>
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
-                            <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="resume.html">Resume</a>
-                            <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="projects.html">Projects</a>
+                            <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" onclick="goToPage('resume-html')">Resume</a>
+                            <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" onclick="goToPage('resume-html')">Projects</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+    </div>
+    <div class="container px-5 my-5 resume-html" style="display: none;" id="resume-html">
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bolder mb-0"><span class="text-light d-inline">Resume</span></h1>
+        </div>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-11 col-xl-9 col-xxl-8">
+                <!-- Experience Section-->
+                <section>
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h2 class="text-primary fw-bolder mb-0">Experience</h2>
+                        <!-- Download resume button-->
+                        <!-- Note: Set the link href target to a PDF file within your project-->
+                        <a class="btn btn-primary px-4 py-3" href="/Assets/cv/CV-Hiras Parasian.pdf">
+                            <div class="d-inline-block bi bi-download me-2"></div>
+                            Download Resume
+                        </a>
+                    </div>
+                    <!-- Experience Card 1-->
+                    <div class="card bg-dark shadow border-0 rounded-4 mb-5">
+                        <div class="card-body p-5">
+                            <div class="row align-items-center gx-5">
+                                <div class="col text-center  text-lg-start mb-4 mb-lg-0">
+                                    <div class="bg-secondary p-4 rounded-4">
+                                        <div class="text-primary fw-bolder mb-2">Nov 2022 - Present</div>
+                                        <div class="small fw-bolder">Fullstack Developer</div>
+                                        <div class="small text-muted">PT. Deltadata Mandiri</div>
+                                        <div class="small text-muted">Jakarta Selatan</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 text-light">
+                                    <div>
+                                        &#x2022; Developing, and maintaining web applications from start to finish, including user interfaces, business logic, and database integration.
+                                        <br>
+                                        &#x2022; Performing front- end development using HTML, CSS, CSS Framework like Bootstrap and JavaScript, along with frameworks like
+                                        React, Next.
+                                        <br>
+                                        &#x2022; Implementing server-side programming using languages such as Node.js, C#.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Experience Card 2-->
+                    <div class="card bg-dark shadow border-0 rounded-4 mb-5">
+                        <div class="card-body p-5">
+                            <div class="row align-items-center gx-5">
+                                <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                    <div class="bg-secondary p-4 rounded-4">
+                                        <div class="text-primary fw-bolder mb-2">May 2022 - Nov 2022</div>
+                                        <div class="small fw-bolder">Fullstack Developer</div>
+                                        <div class="small text-muted">PT. Konsultan Sistem Managemen Indonesia</div>
+                                        <div class="small text-muted">Cileungsi, Jawa Barat</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 text-light">
+                                    <div>
+                                        &#x2022; Developing, and maintaining web applications from start to finish, including user interfaces, business logic, and database integration.
+                                        <br>
+                                        &#x2022; Performing front- end development using HTML, CSS, CSS Framework like Bootstrap and JavaScript, along with frameworks like
+                                        React, Next.
+                                        <br>
+                                        &#x2022; Implementing server-side programming using languages such as Node.js, C#.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Education Section-->
+                <section>
+                    <h2 class="text-secondary fw-bolder mb-4">Education</h2>
+                    <!-- Education Card 1-->
+                    <div class="card bg-dark shadow border-0 rounded-4 mb-5">
+                        <div class="card-body p-5">
+                            <div class="row align-items-center gx-5">
+                                <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                    <div class="bg-secondary p-4 rounded-4">
+                                        <div class="text-light fw-bolder mb-2">2018 - 2022</div>
+                                        <div class="mb-2">
+                                            <div class="small fw-bolder">Universitas Advent Indonesia</div>
+                                            <div class="small text-muted">Kab. Bandung Barat</div>
+                                        </div>
+                                        <div class="fst-italic">
+                                            <div class="small text-muted">Bachelor Degree</div>
+                                            <div class="small text-muted">Informatics Engineering</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 text-light"><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus laudantium, voluptatem quis repellendus eaque sit animi illo ipsam amet officiis corporis sed aliquam non voluptate corrupti excepturi maxime porro fuga.</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Education Card 2-->
+                    <div class="card bg-dark shadow border-0 rounded-4 mb-5">
+                        <div class="card-body p-5">
+                            <div class="row align-items-center gx-5">
+                                <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                    <div class="bg-secondary p-4 rounded-4">
+                                        <div class="text-light fw-bolder mb-2">2014 - 2017</div>
+                                        <div class="mb-2">
+                                            <div class="small fw-bolder">SMK Negeri 5 Kota Bekasi</div>
+                                            <div class="small text-muted">Bekasi, Jawa Barat</div>
+                                        </div>
+                                        <div class="fst-italic">
+                                            <div class="small text-muted">Senior High School</div>
+                                            <div class="small text-muted">industrial electronics engineering</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 text-light"><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus laudantium, voluptatem quis repellendus eaque sit animi illo ipsam amet officiis corporis sed aliquam non voluptate corrupti excepturi maxime porro fuga.</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Divider-->
+                <div class="pb-5"></div>
+                <!-- Skills Section-->
+                <section>
+                    <!-- Skillset Card-->
+                    <div class="card shadow border-0 rounded-4 mb-5">
+                        <div class="card-body bg-dark p-5">
+                            <!-- Professional skills list-->
+                            <div class="mb-5">
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-tools"></i></div>
+                                    <h3 class="fw-bolder mb-0"><span class="text-light d-inline">Professional Skills</span></h3>
+                                </div>
+                                <div class="row row-cols-1 row-cols-md-3 mb-4">
+                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Fullstack Developer</div></div>
+                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Software Engineer</div></div>
+                                    <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Web Development</div></div>
+                                </div>
+                                <div class="row row-cols-1 row-cols-md-3">
+                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Mobile Development</div></div>
+                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Wordpress Developer</div></div>
+                                    <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Frontend Developer</div></div>
+                                </div>
+                            </div>
+                            <!-- Languages list-->
+                            <div class="mb-0">
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-code-slash"></i></div>
+                                    <h3 class="fw-bolder mb-0"><span class="text-light d-inline">Languages</span></h3>
+                                </div>
+                                <div class="row row-cols-1 row-cols-md-3 mb-4">
+                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">HTML</div></div>
+                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">CSS</div></div>
+                                    <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">JavaScript</div></div>
+                                </div>
+                                <div class="row row-cols-1 row-cols-md-3 mb-4">
+                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">React.js</div></div>
+                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Next.js</div></div>
+                                    <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Node.js</div></div>
+                                </div>
+                                <div class="row row-cols-1 row-cols-md-3">
+                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Express.js</div></div>
+                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">.Net MVC</div></div>
+                                    <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">React Native</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
     </div>
     <div class="taskbar">
         <div class="row icons-r align-items-center">
@@ -410,10 +577,10 @@
         </div>
         <div class="row icons align-items-center">
             <div class="col">
-                <img src="/Assets/Icon/windows.svg" alt="windows" height="25" title="HOME">
+                <img src="/Assets/Icon/windows.svg" onclick="goToPage('home-html')" alt="windows" height="25" title="HOME">
             </div>
             <div class="col">
-                <img src="/Assets/Icon/search.svg" alt="windows" height="25" title="CONTACT ME">
+                <img src="/Assets/Icon/search.svg" alt="windows" onclick="goToPage('about-html')" height="25" title="ABOUT ME">
             </div>
             <div class="col">
                 <img src="/Assets/Icon/msstore.svg" alt="windows" height="25">
@@ -422,7 +589,7 @@
                 <img src="/Assets/Icon/file.svg" alt="windows" height="25" title="PROJECT">
             </div>
             <div class="col">
-                <img src="/Assets/Icon/edge.svg" alt="windows" height="25" title="RESUME">
+                <img src="/Assets/Icon/edge.svg" onclick="goToPage('resume-html')" alt="windows" height="25" title="RESUME">
             </div>
             <div class="col">
                 <img src="/Assets/Icon/vsc.svg" alt="windows" height="25">
@@ -463,6 +630,17 @@
             var dates = new Date().toLocaleDateString();
             clockElement.textContent = times;
             dateElement.textContent = dates;
+        }
+
+        function goToPage(className){
+            resetPage();
+            document.getElementById(className).style.display = '';
+        }
+
+        function resetPage(){
+            document.getElementById("resume-html").style.display = 'none';
+            document.getElementById("home-html").style.display = 'none';
+            document.getElementById("about-html").style.display = 'none';
         }
     
         setInterval(clock, 1000);
