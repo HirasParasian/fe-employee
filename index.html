@@ -569,6 +569,88 @@
             </div>
         </div>
     </div>
+    <div class="project-html" id="project-html" style="display: none;">
+        <section class="py-5">
+            <div class="container px-5 mb-5">
+                <div class="text-center mb-5">
+                    <h1 class="display-5 fw-bolder mb-0"><span class="text-light d-inline">Projects</span></h1>
+                </div>
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-11 col-xl-9 col-xxl-8">
+                        <!-- Project Card 1-->
+                        <div class="card bg-dark overflow-hidden shadow rounded-4 border-0 mb-5">
+                            <div class="card-body p-0">
+                                <div class="d-flex align-items-center">
+                                    <div class="p-5 text-light">
+                                        <h2 class="fw-bolder">Work Plan & Budgeting</h2>
+                                        <h5>PT. Pertamina EP</h5>
+                                        <p><strong>C#, .NET MVC, Javascript, Bootstrap, SQL Server</strong></p>
+                                    </div>
+                                    <div class="p-5">
+                                        <img class="img-fluid rounded rounded-3" width="200" src="/Assets/img/pep.jpg" alt="..." />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Project Card 2-->
+                        <div class="card bg-dark overflow-hidden shadow rounded-4 border-0 mb-5">
+                            <div class="card-body p-0">
+                                <div class="d-flex align-items-center">
+                                    <div class="p-5 text-light">
+                                        <h2 class="fw-bolder">Coal Chain Management - PTM</h2>
+                                        <h5>PT. Borneo Indobara</h5>
+                                        <p><strong>React.JS, Javascript, Bootstrap, Postgre SQL</strong></p>
+                                    </div>
+                                    <div class="py-5 me-5 pe-3">
+                                        <img class="img-fluid rounded rounded-3 bg-light" width="200" src="/Assets/img/borneo.png" alt="..." />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Project Card 3-->
+                        <div class="card bg-dark overflow-hidden shadow rounded-4 border-0 mb-5">
+                            <div class="card-body p-0">
+                                <div class="d-flex align-items-center">
+                                    <div class="p-5 text-light">
+                                        <h2 class="fw-bolder">Customer Relationship Management</h2>
+                                        <h5>Kementrian PPN/Bappenas</h5>
+                                        <p><strong>Next.JS, Javascript, Bootstrap, MongoDB</strong></p>
+                                    </div>
+                                    <div class="py-5 me-5 pe-3">
+                                        <img class="img-fluid rounded rounded-3 bg-light" width="200" src="/Assets/img/bappenas.png" alt="..." />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Project Card 3-->
+                        <div class="card bg-dark overflow-hidden shadow rounded-4 border-0 mb-5">
+                            <div class="card-body p-0">
+                                <div class="d-flex align-items-center">
+                                    <div class="p-5 text-light">
+                                        <h2 class="fw-bolder">Career Management Online</h2>
+                                        <h5>PT. Astra Honda Motor</h5>
+                                        <p><strong>C#, .NET, Javascript, Metro UI, SQL Server, Oracle</strong></p>
+                                    </div>
+                                    <div class="p-5 mx-4">
+                                        <img class="img-fluid rounded rounded-3 bg-light" width="200" src="/Assets/img/ahm.png" alt="..." />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Call to action section-->
+        <section class="py-5 bg-gradient-primary-to-secondary text-white">
+            <div class="container px-5 my-5">
+                <div class="text-center">
+                    <h2 class="display-4 fw-bolder mb-4">Let's build something together</h2>
+                    <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="contact.html">Contact me</a>
+                </div>
+            </div>
+        </section>
+    </div>
     <div class="taskbar">
         <div class="row icons-r align-items-center">
             <div class="col ms-4">
@@ -580,25 +662,25 @@
                 <img src="/Assets/Icon/windows.svg" onclick="goToPage('home-html')" alt="windows" height="25" title="HOME">
             </div>
             <div class="col">
-                <img src="/Assets/Icon/search.svg" alt="windows" onclick="goToPage('about-html')" height="25" title="ABOUT ME">
+                <img src="/Assets/Icon/search.svg" alt="about" onclick="goToPage('about-html')" height="25" title="ABOUT ME">
             </div>
             <div class="col">
-                <img src="/Assets/Icon/msstore.svg" alt="windows" height="25">
+                <img src="/Assets/Icon/msstore.svg" alt="msstore" height="25">
             </div>
             <div class="col">
-                <img src="/Assets/Icon/file.svg" alt="windows" height="25" title="PROJECT">
+                <img src="/Assets/Icon/file.svg" alt="project" onclick="goToPage('project-html')" height="25" title="PROJECT">
             </div>
             <div class="col">
-                <img src="/Assets/Icon/edge.svg" onclick="goToPage('resume-html')" alt="windows" height="25" title="RESUME">
+                <img src="/Assets/Icon/edge.svg" onclick="goToPage('resume-html')" alt="resume" height="25" title="RESUME">
             </div>
             <div class="col">
-                <img src="/Assets/Icon/vsc.svg" alt="windows" height="25">
+                <img src="/Assets/Icon/vsc.svg" alt="vsc" height="25">
             </div>
             <div class="col">
-                <img src="/Assets/Icon/vs.svg" alt="windows" height="25">
+                <img src="/Assets/Icon/vs.svg" alt="vs" height="25">
             </div>
             <div class="col">
-                <img src="/Assets/Icon/chrome.svg" alt="windows" height="25">
+                <img src="/Assets/Icon/chrome.svg" alt="chrome" height="25">
             </div>
         </div>
         <div class="row icons-r align-items-center">  
@@ -641,6 +723,7 @@
             document.getElementById("resume-html").style.display = 'none';
             document.getElementById("home-html").style.display = 'none';
             document.getElementById("about-html").style.display = 'none';
+            document.getElementById("project-html").style.display = 'none';
         }
     
         setInterval(clock, 1000);
