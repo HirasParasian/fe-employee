@@ -256,3 +256,80 @@ let kkk = DATAX_FIX.filter(a=>{if(a.loadingEqp == "CE6164 - 6020"){
     return a.data
 }})
 console.log(kkk)
+
+var DATAX_FIZ = [
+    {
+        loadingEqp : "CE6164 - 6020",
+        service : "OVERBURDEN",
+        operator : "YOHANES BENI WIJAYA",
+        foreman : 3714,
+        supervisor : 3714,
+        location : "PIT KGB",
+        material : "OVERBUDEN",
+        production : 329.22,
+        uom:"test",
+        data : [
+                {
+                    haulingEq : "CO4582 - 777",
+                    operator : "Syaifullah - 11",
+                    rit : "1",
+                    cap : "41.21",
+                    measurement:"82.66",
+                    measured:"0",
+                    dest:"OPD",
+                    distance:"2900",
+                    actMeas : "0",
+                    grade:"C"
+                },
+                {
+                    haulingEq : "CO4582 - 778",
+                    operator : "Wijaya Agung - 11",
+                    rit : "1",
+                    cap : "41.21",
+                    measurement:"82.66",
+                    measured:"0",
+                    dest:"OPD",
+                    distance:"2900",
+                    actMeas : "0",
+                    grade:"D"
+                }
+        ]
+    },
+    {
+        loadingEqp : "CE6164 - 6021",
+        service : "OVERBURDEN",
+        operator : "YOHANES BENI WIJAYA",
+        foreman : 3714,
+        supervisor : 3714,
+        location : "PIT KGB",
+        material : "OVERBUDEN",
+        production : 329.22,
+        uom:"test",
+        data : [
+                {
+                    haulingEq : "CO4582 - 779",
+                    operator : "Syaifullah - 11",
+                    rit : "1",
+                    cap : "41.21",
+                    measurement:"82.66",
+                    measured:"0",
+                    dest:"OPD",
+                    distance:"2900",
+                    actMeas : "0",
+                    grade:"A"
+                },
+                {
+                    haulingEq : "CO4582 - 775",
+                    operator : "Wijaya Agung - 11",
+                    rit : "1",
+                    cap : "41.21",
+                    measurement:"82.66",
+                    measured:"0",
+                    dest:"OPD",
+                    distance:"2900",
+                    actMeas : "0",
+                    grade:"B"
+                }
+        ]
+    }
+]
