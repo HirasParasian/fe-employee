@@ -131,7 +131,31 @@
                     url: crudServiceBaseUrl + "/Products",
                     dataType: "jsonp",
                     success: function (result) {
-                        options.success(result);
+                        console.log(result)
+                        let xui = [
+                                    {
+                                        "ProductID": 1,
+                                        "ProductName": "Chai",
+                                        "UnitPrice": 18,
+                                        "UnitsInStock": 39,
+                                        "Discontinued": false
+                                    },
+                                    {
+                                        "ProductID": 2,
+                                        "ProductName": "Chang",
+                                        "UnitPrice": 19,
+                                        "UnitsInStock": 17,
+                                        "Discontinued": false
+                                    },
+                                    {
+                                        "ProductID": 3,
+                                        "ProductName": "Aniseed Hiras",
+                                        "UnitPrice": 10,
+                                        "UnitsInStock": 13,
+                                        "Discontinued": false
+                                    },
+                                ]
+                        options.success(xui);
                     },
                     error: function (result) {
                         options.error(result);
