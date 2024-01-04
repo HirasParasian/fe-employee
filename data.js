@@ -257,6 +257,7 @@ let kkk = DATAX_FIX.filter(a=>{if(a.loadingEqp == "CE6164 - 6020"){
 }})
 console.log(kkk)
 
+
 var DATAX_FIZ = [
     {
         loadingEqp : "CE6164 - 6020",
