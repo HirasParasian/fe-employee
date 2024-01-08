@@ -221,21 +221,41 @@
         function onRead2(options) {
             options.success(DATAX_FIX);
         }
+        var crudServiceBaseUrl = "https://demos.telerik.com/kendo-ui/service"
+        function OnUpdate (){
+            console.log("UPDATE")
+        }
+        function OnUpdate2 (){
+            console.log("UPDATE2")
+        }
         $(document).ready(function() {
             generateTab()
             option()
             var element = $("#grid").kendoGrid({
                 //editable: "incell",
-                dataSource: {
+                // dataSource: {
+                //     // pageSize: 6,
+                //     // serverPaging: true,
+                //     // serverSorting: true
+                // },
+                dataSource : new kendo.data.DataSource({
                     dataType: "jsonp",
                     transport: {
                         //read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Employees"
-                        read:onRead2
+                        read:onRead2,
+                        
+                        update: OnUpdate2,
+                        parameterMap: function(options, operation) {
+                            console.log("Mashook")
+                            if (operation !== "read" && options.models) {
+                                console.log(options)
+                                console.log(operation)
+                                //return {models: kendo.stringify(options.models)};
+                            }
+                        }
                     },
-                    // pageSize: 6,
-                    // serverPaging: true,
-                    // serverSorting: true
-                },
+
+                }),
                 height: 600,
                 scrollable: false,
                 // sortable: true,
@@ -302,27 +322,53 @@
             options.success(filter_data[0].data);
         }
         //"https://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
+
         function detailInit(e) {
             idData = e.data.loadingEqp
             $("<div/>").appendTo(e.detailCell).kendoGrid({
                 editable: true,
                 navigatable: true,
                 batch: true,
-                toolbar: ["create"],
-                dataSource: {
+                toolbar: ["create","save"],
+                dataSource : new kendo.data.DataSource({
                     dataType: "jsonp",
                     transport: {
-                        //read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
-                        read:onRead
-                       // read:onRead(options,e.data.loadingEqp)
+                        //read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Employees"
+                        read:onRead,
+                        update: function(e){    
+                            console.log("update");
+                            console.log(e);
+                            e.success();
+                        },
                     },
-                    batch: true,
-                    // serverPaging: true,
-                    // serverSorting: true,
-                    // serverFiltering: true,
-                    // pageSize: 10,
-                    //filter: { field: "loadingEqp", operator: "eq", value: e.data.loadingEqp }
-                },
+                    schema: {
+                        model: {
+                            id: "haulingEq",
+                            fields: {
+                                haulingEq: { type: "string" },
+                                operator: { type: "string" },
+                                rit: { type: "string" },
+                                cap: { type: "string" },
+                                measurement: { type: "string" },
+                                mesured: { type: "string" },
+                                dest: { type: "string" },
+                                distance: { type: "string" },
+                                actMeas: { type: "string" },
+                                grade: { type: "string" },
+                            }
+                        }
+                    }
+
+                }),
+                // dataSource: {
+                    
+
+                //     // serverPaging: true,
+                //     // serverSorting: true,
+                //     // serverFiltering: true,
+                //     // pageSize: 10,
+                //     //filter: { field: "loadingEqp", operator: "eq", value: e.data.loadingEqp }
+                // },
                 scrollable: false,
                 // sortable: true,
                 // pageable: true,
@@ -338,7 +384,8 @@
                     { title: "Distance",field: "distance", width: "110px" },
                     { title: "Act. Meas.",field: "actMeas.", width: "110px" },
                     { title: "Grade",field: "grade", width: "110px" },
-                ]
+                ],
+                editable: true
             });
         }
     </script>
