@@ -340,6 +340,24 @@
                             console.log(e);
                             e.success();
                         },
+                        destroy: function(e){    
+                            console.log("destroy");
+                            console.log(e);
+                            e.success();
+                        },
+                        
+                        create: function(e){    
+                            console.log("create");
+                            console.log(e);
+                            e.success();
+                        },
+                        parameterMap: function(options, operation) {
+                            console.log(options)
+                            console.log(operation)
+                            if (operation !== "read" && options.models) {
+                                //return {models: kendo.stringify(options.models)};
+                            }
+                        }
                     },
                     schema: {
                         model: {
@@ -384,6 +402,7 @@
                     { title: "Distance",field: "distance", width: "110px" },
                     { title: "Act. Meas.",field: "actMeas.", width: "110px" },
                     { title: "Grade",field: "grade", width: "110px" },
+                    { command: "destroy", title: "&nbsp;", width: 150 },
                 ],
                 editable: true
             });
