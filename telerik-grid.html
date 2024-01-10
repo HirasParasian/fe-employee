@@ -66,10 +66,8 @@
     
 </head>
 <body>
-    <div id="example container-fluid">
-        <div class="row mt-5 container-fluid">
-            <h1>Lorem Ipsum</h1>
-        </div>
+    <div class="row mt-5 container-fluid">
+        <h1>Lorem Ipsum</h1>
         <div class="row my-5 container-fluid">
             <div class="col">
                 <input id="kd-place-chooser" />
@@ -93,50 +91,98 @@
                 <input id="kd-place-chooser7" />
             </div>
         </div>
-        <div class="demo-section  mx-3">
-            <div id="tabstrip">
-                <ul>
-                    <li class="k-active">
-                        <button class="btn btns">
-                            Production Activity
-                        </button>
-                    </li>
-                    <li>
-                        <button class="btn btns">
-                            Production Support
-                        </button>
-                    </li>
-                    <li>
-                        <button class="btn btns">
-                            Production Issues
-                        </button>
-                    </li>
-                </ul>
-                <div>
-                    <div class="mb-3 p-2 bg-gry">
-                        <button class="btn btn-light mx-1"><i class="fa-solid fa-plus"></i> &nbsp;Loading</button>
-                        <button class="btn btn-light mx-1"><i class="fa-solid fa-plus"></i> &nbsp;Hauling</button>
-                    </div>
-                    <div id="grid"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2 mt-5">
+                <div class="k-form-field-wrap" style="overflow-y: auto; height: 300px;">
+                    <ul id="checkboxgroup"></ul>
                 </div>
                 <div>
-                    <span class="sunny">&nbsp;</span>
-                    <div class="weather">
-                        <h2>29<span>&ordm;C</span></h2>
-                        <p>Sunny weather in New York.</p>
-                    </div>
+                    <button class="btn btn-primary" onclick="filterTable()">Check</button>
                 </div>
-                <div>
-                    <span class="sunny">&nbsp;</span>
-                    <div class="weather">
-                        <h2>21<span>&ordm;C</span></h2>
-                        <p>Sunny weather in London.</p>
+            </div>
+            <div class="col-10">
+                <div id="example container-fluid">
+                    <div class="demo-section  mx-3">
+                        <div id="tabstrip">
+                            <ul>
+                                <li class="k-active">
+                                    <button class="btn btns">
+                                        Production Activity
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="btn btns">
+                                        Production Support
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="btn btns">
+                                        Production Issues
+                                    </button>
+                                </li>
+                            </ul>
+                            <div>
+                                <div class="mb-3 p-2 bg-gry">
+                                    <button class="btn btn-light mx-1"><i class="fa-solid fa-plus"></i> &nbsp;Loading</button>
+                                    <button class="btn btn-light mx-1"><i class="fa-solid fa-plus"></i> &nbsp;Hauling</button>
+                                </div>
+                                <div id="grid"></div>
+                            </div>
+                            <div>
+                                <span class="sunny">&nbsp;</span>
+                                <div class="weather">
+                                    <h2>29<span>&ordm;C</span></h2>
+                                    <p>Sunny weather in New York.</p>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="sunny">&nbsp;</span>
+                                <div class="weather">
+                                    <h2>21<span>&ordm;C</span></h2>
+                                    <p>Sunny weather in London.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
+    </div>
     <script>
+        var dataTable = DATAX_FIX;
+        var dataTables = DATAX_FIX;
+        const generateCheckbox = () =>{
+            let dataCheckbox = []
+            DATAX_FIX.forEach(e => {
+                dataCheckbox.push({
+                    label:e.loadingEqp,
+                    value:e.loadingEqp,
+                })
+            });
+            var checkBoxGroup = $("#checkboxgroup").kendoCheckBoxGroup({
+                items: dataCheckbox,
+                layout: "vertical",
+                //value: ["1", "2"]
+            }).data("kendoCheckBoxGroup");
+
+            $("#selectAllCheckbox").change(function () {
+                if (this.checked) {
+                    checkBoxGroup.checkAll(true)
+                } else {
+                    checkBoxGroup.checkAll(false)
+                }
+            });
+        }
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey && e.key === 's') {
+                // Prevent the Save dialog to open
+                e.preventDefault();
+                // Place your code here
+                console.log('CTRL + S');
+            }
+        });
         function generateTab(){
             $("#tabstrip").kendoTabStrip({
                 animation:  {
@@ -146,7 +192,14 @@
                 }
             });
         }
+        function dropdownlist_change(e) {
+            var value = this.value();
+            console.log(value)
+            console.log("MHASOOK")
+        // Use the value of the widget
+        }
         function option(){
+            
             var dataSource = new kendo.data.DataSource({
             data: [
                 { ID: 1, NAME: "CE6164 - 6020"},
@@ -213,13 +266,14 @@
                 dataSource: dataSource
             });
 
+
             
             $("#tab-app").kendoTabStrip({   
                 animation: { open: { effects: "fadeIn" } }
             });
         }
         function onRead2(options) {
-            options.success(DATAX_FIX);
+            options.success(dataTables);
         }
         var crudServiceBaseUrl = "https://demos.telerik.com/kendo-ui/service"
         function OnUpdate (){
@@ -228,9 +282,19 @@
         function OnUpdate2 (){
             console.log("UPDATE2")
         }
-        $(document).ready(function() {
-            generateTab()
-            option()
+        const filterTable = () =>{
+            var checkGroup = $("#checkboxgroup").getKendoCheckBoxGroup();
+            console.log(checkGroup.value());
+            dataTables = DATAX_FIX.filter(e=>{
+                if( checkGroup.value().includes(e.loadingEqp)){
+                    return e;
+                }
+            })
+            generateTable()
+        }
+        const generateTable = (data) =>{
+            $("#grid").empty()
+            //return 0;
             var element = $("#grid").kendoGrid({
                 //editable: "incell",
                 // dataSource: {
@@ -243,7 +307,6 @@
                     transport: {
                         //read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Employees"
                         read:onRead2,
-                        
                         update: OnUpdate2,
                         parameterMap: function(options, operation) {
                             console.log("Mashook")
@@ -312,6 +375,12 @@
                     },
                 ]
             });
+        }
+        $(document).ready(function() {
+            generateTab()
+            generateCheckbox()
+            option()
+            
         });
         let idData = ""
         function onRead(options) {
@@ -323,14 +392,41 @@
         }
         //"https://demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
 
+        var datac =  [
+            { OperatorID: "1", OperatorName: "Syaifullah - 11"},
+            { OperatorID: "2", OperatorName: "Wijaya Agung - 11"},
+        ]
+        function clientCategoryEditor(container, options) {
+            $('<input required name="Operator">')
+                .appendTo(container)
+                .kendoDropDownList({
+                    autoBind: true,
+                    filter: "contains",
+                    optionLabel: 'Shift',
+                    dataTextField: "OperatorName",
+                    dataValueField: "OperatorID",
+                    dataSource: {
+                        data: datac
+                    }
+                });
+        }
+        const onDataBound = () =>{
+            console.log("DATA BOUND")
+        }
         function detailInit(e) {
             idData = e.data.loadingEqp
-            $("<div/>").appendTo(e.detailCell).kendoGrid({
-                editable: true,
+            $("<div  style='width:1000px' />").appendTo(e.detailCell).kendoGrid({
+                editable: "incell",
                 navigatable: true,
-                batch: true,
+                //groupable: true,
+                reorderable: true, // ----- Freez Column Custom
                 toolbar: ["create","save"],
+                edit:function(){
+                    //optionTable()
+                },
+                dataBound: onDataBound,
                 dataSource : new kendo.data.DataSource({
+                    batch: true,
                     dataType: "jsonp",
                     transport: {
                         //read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Employees"
@@ -345,7 +441,6 @@
                             console.log(e);
                             e.success();
                         },
-                        
                         create: function(e){    
                             console.log("create");
                             console.log(e);
@@ -364,7 +459,12 @@
                             id: "haulingEq",
                             fields: {
                                 haulingEq: { type: "string" },
-                                operator: { type: "string" },
+                                Operator: { 
+                                    defaultValue: {
+                                        OperatorID: 8,
+                                        OperatorName: "Seafood"
+                                    }
+                                },
                                 rit: { type: "string" },
                                 cap: { type: "string" },
                                 measurement: { type: "string" },
@@ -387,13 +487,22 @@
                 //     // pageSize: 10,
                 //     //filter: { field: "loadingEqp", operator: "eq", value: e.data.loadingEqp }
                 // },
-                scrollable: false,
                 // sortable: true,
                 // pageable: true,
                 
                 columns: [
-                    { title: "Hauling Eq",field: "haulingEq", width: "110px" },
-                    { title: "Operator",field: "operator", width: "110px" },
+                    {   title: "Hauling Eq",
+                        field: "haulingEq", 
+                        width: "110px",
+                        locked: true,
+                        lockable: false,
+                    },
+                    { 
+                        title: "Operator",
+                        field: "Operator.OperatorName", 
+                        width: 180,
+                        editor: clientCategoryEditor ,
+                    },
                     { title: "Rit",field: "rit", width: "110px" },
                     { title: "Cap",field: "cap", width: "110px" },
                     { title: "Measurement",field: "measurement", width: "110px" },
@@ -407,8 +516,12 @@
                 editable: true
             });
         }
+
+        const changeOption = (obj) =>{
+            $(obj)
+        }
     </script>
-</div>
+
 
 
 

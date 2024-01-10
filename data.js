@@ -189,7 +189,11 @@ let DATAX_FIX = [
         data : [
                 {
                     haulingEq : "CO4582 - 777",
-                    operator : "Syaifullah - 11",
+                    Operator: {
+                        OperatorID: 1,
+                        OperatorName: "Syaifullah - 11"
+                      },
+                    OperatorID: 1,
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -202,6 +206,11 @@ let DATAX_FIX = [
                 {
                     haulingEq : "CO4582 - 778",
                     operator : "Wijaya Agung - 11",
+                    Operator: {
+                        OperatorID: 2,
+                        OperatorName: "Wijaya Agung - 11"
+                      },
+                    OperatorID: 2,
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -226,7 +235,11 @@ let DATAX_FIX = [
         data : [
                 {
                     haulingEq : "CO4582 - 779",
-                    operator : "Syaifullah - 11",
+                    Operator: {
+                        OperatorID: 1,
+                        OperatorName: "Syaifullah - 11"
+                      },
+                    OperatorID: 1,
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -238,7 +251,191 @@ let DATAX_FIX = [
                 },
                 {
                     haulingEq : "CO4582 - 775",
-                    operator : "Wijaya Agung - 11",
+                    Operator: {
+                        OperatorID: 2,
+                        OperatorName: "Wijaya Agung - 11"
+                      },
+                    OperatorID: 2,
+                    rit : "1",
+                    cap : "41.21",
+                    measurement:"82.66",
+                    measured:"0",
+                    dest:"OPD",
+                    distance:"2900",
+                    actMeas : "0",
+                    grade:"B"
+                }
+        ]
+    },
+    {
+        loadingEqp : "CE6164 - 6022",
+        service : "OVERBURDEN",
+        operator : "YOHANES BENI WIJAYA",
+        foreman : 3714,
+        supervisor : 3714,
+        location : "PIT KGB",
+        material : "OVERBUDEN",
+        production : 329.22,
+        uom:"test",
+        data : [
+                {
+                    haulingEq : "CO4582 - 780",
+                    Operator: {
+                        OperatorID: 1,
+                        OperatorName: "Syaifullah - 11"
+                      },
+                    OperatorID: 1,
+                    rit : "1",
+                    cap : "41.21",
+                    measurement:"82.66",
+                    measured:"0",
+                    dest:"OPD",
+                    distance:"2900",
+                    actMeas : "0",
+                    grade:"A"
+                },
+                {
+                    haulingEq : "CO4582 - 781",
+                    Operator: {
+                        OperatorID: 2,
+                        OperatorName: "Wijaya Agung - 11"
+                      },
+                    OperatorID: 2,
+                    rit : "1",
+                    cap : "41.21",
+                    measurement:"82.66",
+                    measured:"0",
+                    dest:"OPD",
+                    distance:"2900",
+                    actMeas : "0",
+                    grade:"B"
+                }
+        ]
+    },
+    {
+        loadingEqp : "CE6164 - 6023",
+        service : "OVERBURDEN",
+        operator : "YOHANES BENI WIJAYA",
+        foreman : 3714,
+        supervisor : 3714,
+        location : "PIT KGB",
+        material : "OVERBUDEN",
+        production : 329.22,
+        uom:"test",
+        data : [
+                {
+                    haulingEq : "CO4582 - 782",
+                    Operator: {
+                        OperatorID: 1,
+                        OperatorName: "Syaifullah - 11"
+                      },
+                    OperatorID: 1,
+                    rit : "1",
+                    cap : "41.21",
+                    measurement:"82.66",
+                    measured:"0",
+                    dest:"OPD",
+                    distance:"2900",
+                    actMeas : "0",
+                    grade:"A"
+                },
+                {
+                    haulingEq : "CO4582 - 783",
+                    Operator: {
+                        OperatorID: 2,
+                        OperatorName: "Wijaya Agung - 11"
+                      },
+                    OperatorID: 2,
+                    rit : "1",
+                    cap : "41.21",
+                    measurement:"82.66",
+                    measured:"0",
+                    dest:"OPD",
+                    distance:"2900",
+                    actMeas : "0",
+                    grade:"B"
+                }
+        ]
+    },
+    {
+        loadingEqp : "CE6164 - 6024",
+        service : "OVERBURDEN",
+        operator : "YOHANES BENI WIJAYA",
+        foreman : 3714,
+        supervisor : 3714,
+        location : "PIT KGB",
+        material : "OVERBUDEN",
+        production : 329.22,
+        uom:"test",
+        data : [
+                {
+                    haulingEq : "CO4582 - 785",
+                    Operator: {
+                        OperatorID: 1,
+                        OperatorName: "Syaifullah - 11"
+                      },
+                    OperatorID: 1,
+                    rit : "1",
+                    cap : "41.21",
+                    measurement:"82.66",
+                    measured:"0",
+                    dest:"OPD",
+                    distance:"2900",
+                    actMeas : "0",
+                    grade:"A"
+                },
+                {
+                    haulingEq : "CO4582 - 786",
+                    Operator: {
+                        OperatorID: 2,
+                        OperatorName: "Wijaya Agung - 11"
+                      },
+                    OperatorID: 2,
+                    rit : "1",
+                    cap : "41.21",
+                    measurement:"82.66",
+                    measured:"0",
+                    dest:"OPD",
+                    distance:"2900",
+                    actMeas : "0",
+                    grade:"B"
+                }
+        ]
+    },
+    {
+        loadingEqp : "CE6164 - 6025",
+        service : "OVERBURDEN",
+        operator : "YOHANES BENI WIJAYA",
+        foreman : 3714,
+        supervisor : 3714,
+        location : "PIT KGB",
+        material : "OVERBUDEN",
+        production : 329.22,
+        uom:"test",
+        data : [
+                {
+                    haulingEq : "CO4582 - 787",
+                    Operator: {
+                        OperatorID: 2,
+                        OperatorName: "Wijaya Agung - 11"
+                      },
+                    OperatorID: 2,
+                    rit : "1",
+                    cap : "41.21",
+                    measurement:"82.66",
+                    measured:"0",
+                    dest:"OPD",
+                    distance:"2900",
+                    actMeas : "0",
+                    grade:"A"
+                },
+                {
+                    haulingEq : "CO4582 - 788",
+                    Operator: {
+                        OperatorID: 1,
+                        OperatorName: "Syaifullah - 11"
+                      },
+                    OperatorID: 1,
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -276,6 +473,11 @@ var DATAX_FIZ = [
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
+                    Operator: {
+                        OperatorID: 1,
+                        OperatorName: "Beverages"
+                      },
+                    OperatorID: 1,
                     measured:"0",
                     dest:"OPD",
                     distance:"2900",
@@ -288,6 +490,11 @@ var DATAX_FIZ = [
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
+                    Operator: {
+                        OperatorID: 1,
+                        OperatorName: "Beverages"
+                      },
+                    OperatorID: 1,
                     measured:"0",
                     dest:"OPD",
                     distance:"2900",
@@ -314,6 +521,11 @@ var DATAX_FIZ = [
                     cap : "41.21",
                     measurement:"82.66",
                     measured:"0",
+                    Operator: {
+                        OperatorID: 1,
+                        OperatorName: "Beverages"
+                      },
+                    OperatorID: 1,
                     dest:"OPD",
                     distance:"2900",
                     actMeas : "0",
@@ -324,7 +536,12 @@ var DATAX_FIZ = [
                     operator : "Wijaya Agung - 11",
                     rit : "1",
                     cap : "41.21",
-                    measurement:"82.66",
+                    measurement:"82.66",  
+                    Operator: {
+                        OperatorID: 1,
+                        OperatorName: "Beverages"
+                      },
+                    OperatorID: 1,
                     measured:"0",
                     dest:"OPD",
                     distance:"2900",
@@ -334,3 +551,29 @@ var DATAX_FIZ = [
         ]
     }
 ]
+
+var categories = [{
+    OperatorID: 1,
+    OperatorName: "Beverages"
+}, {
+    OperatorID: 2,
+    OperatorName: "Condiments"
+}, {
+    OperatorID: 3,
+    OperatorName: "Confections"
+}, {
+    OperatorID: 4,
+    OperatorName: "Dairy Products"
+}, {
+    OperatorID: 5,
+    OperatorName: "Grains/Cereals"
+}, {
+    OperatorID: 6,
+    OperatorName: "Meat/Poultry"
+}, {
+    OperatorID: 7,
+    OperatorName: "Produce"
+}, {
+    OperatorID: 8,
+    OperatorName: "Seafood"
+}];

@@ -3,6 +3,11 @@
 <head>
     <title></title>
 
+    
+    
+    
+        <!-- Used to add modal loading indicator for igGrid -->
+        <script src="http://www.igniteui.com/js/grid-modal-loading-inicator.js"></script>
     <!-- Ignite UI for jQuery Required Combined CSS Files -->
     <script src="/data.js"></script>
     <link href="https://cdn-na.infragistics.com/igniteui/2023.1/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
@@ -157,6 +162,9 @@
                         <button class="btn btn-light mx-1"><i class="fa-solid fa-plus"></i> &nbsp;Hauling</button>
                     </div>
                     <table id="hierarchicalGrid"></table>
+                    <input type="button" id="saveChanges" class="button-style" value="Save Changes" />
+                    <input type="button" id="undo" class="button-style" value="Undo" />
+                    <input type="button" id="redo" class="button-style" value="Redo" />
                 </div>
                 <div id="support" class="dashboard">
                     <div>Tab 2</div>
@@ -247,7 +255,8 @@
         $(function () {
             generateOption(optionData)
             generateTab()
-            $("#hierarchicalGrid").igHierarchicalGrid({
+            var grid = $("#hierarchicalGrid")
+            grid.igHierarchicalGrid({
                 width: "100%",
                 autoGenerateColumns: false,
                 dataSource: DATAX_FIZ,
@@ -326,8 +335,22 @@
                              {
                                 name: "Updating",
                                 enableAddRow:true,
+                                editMode: "row",
+                                enableDeleteRow: true,
+                                columnSettings: [
+                                    { columnKey: "haulingEq", editorOptions: { type: "string", disabled: false} },
+                                    { columnKey: "operator", editorOptions: { type: "string", disabled: false} },
+                                    { columnKey: "rit", editorOptions: { type: "string", disabled: false} },
+                                    { columnKey: "cap", editorOptions: { type: "string", disabled: false} },
+                                    { columnKey: "measurement", editorOptions: { type: "string", disabled: false} },
+                                    { columnKey: "measured", editorOptions: { type: "string", disabled: false} },
+                                    { columnKey: "dest", editorOptions: { type: "string", disabled: false} },
+                                    { columnKey: "actMeas", editorOptions: { type: "string", disabled: false} },
+                                    { columnKey: "grade", editorOptions: { type: "string", disabled: false} },
+                                ]
                             }
-                        ]
+                        ],
+                        updateUrl : "http://mydomain.com/UpdateCustomer"
                     }
                 ]
             });
@@ -357,7 +380,22 @@
                 return count;
             }
 
+            $("#saveChanges").on('click',
+                function (e) {
+                    console.log("MASUK")
+                    console.log(grid.igGrid)
+                    grid.igGrid("saveChanges", function saveSuccess() {
+                        //loadingIndicator.hide();
+                    });
+                    //loadingIndicator.show();
+                    //$("#undo").igButton("disable");
+                    //$(this).igButton("disable");
+                    return false;
+                }
+            );
+
         });
+
     </script>
 
 </body>
