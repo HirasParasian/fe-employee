@@ -128,6 +128,8 @@
                                     <button class="btn btn-light mx-1"><i class="fa-solid fa-plus"></i> &nbsp;Loading</button>
                                     <button class="btn btn-light mx-1"><i class="fa-solid fa-plus"></i> &nbsp;Hauling</button>
                                 </div>
+                                <button id="expand" class='k-button k-button-md k-rounded-md k-button-solid k-button-solid-base'><span class='k-button-text'>Expand All</span></button>
+                                <button id="collapse" class='k-button k-button-md k-rounded-md k-button-solid k-button-solid-base'><span class='k-button-text'>Collapse All</span></button>
                                 <div id="grid"></div>
                             </div>
                             <div>
@@ -151,6 +153,19 @@
         </div>
     </div>
     <script>
+        $('#expand').click(function(e){
+          var grid = $("#grid").data("kendoGrid");
+          $( ".k-master-row" ).each(function( index ) {
+            grid.expandRow(this);
+          });
+        })
+
+        $('#collapse').click(function(e){
+          var grid = $("#grid").data("kendoGrid");
+          $( ".k-master-row" ).each(function( index ) {
+            grid.collapseRow(this);
+          });
+        })
         var dataTable = DATAX_FIX;
         var dataTables = DATAX_FIX;
         const generateCheckbox = () =>{
