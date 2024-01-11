@@ -641,7 +641,8 @@
         }
         function onReadCB(options) {
             let dataCheckbox = []
-            let disabledData = ['CE6164 - 6022','CE6164 - 6023']
+            //let disabledData = ['CE6164 - 6022','CE6164 - 6023']
+            let disabledData = []
             DATAX_FIX.forEach(e => {
                 let editBy = ""
                 if(disabledData.includes(e.loadingEqp)){
