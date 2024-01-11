@@ -63,6 +63,10 @@
         .k-tabstrip-top > .k-content, .k-tabstrip-top > .k-tabstrip-content{
             border-width: 0px;
         }
+        .k-disabled-check{
+            pointer-events: none;
+            background-color: rgb(205, 205, 205);
+        }
         /* border-color: rgba(0, 0, 0, 0.08); */
     </style>
     
@@ -104,7 +108,7 @@
                 </div>
                 <div>
                 </div>
-                <div>
+                <div class="mt-3">
                     <button class="btn btn-primary" onclick="filterTable()">Check</button>
                 </div>
             </div>
@@ -637,11 +641,17 @@
         }
         function onReadCB(options) {
             let dataCheckbox = []
+            let disabledData = ['CE6164 - 6022','CE6164 - 6023']
             DATAX_FIX.forEach(e => {
+                let editBy = ""
+                if(disabledData.includes(e.loadingEqp)){
+                    console.log("SINI")
+                    editBy = "Another User"
+                }
                 dataCheckbox.push({
                     label:e.loadingEqp,
                     value:e.loadingEqp,
-                    edited:"",
+                    EditedBy:editBy,
                 })
             });
             options.success(dataCheckbox);
@@ -659,12 +669,19 @@
                         }
                     }
                 },
-                persistSelection: true,
+                //persistSelection: true,
                 change: thisChange,
                 columns: [
-                    { selectable: true, width: "50px" },
+                    { 
+                        selectable: true, 
+                        width: "50px",
+                        headerTemplate:'<b></b>',
+                        // attributes: {
+                        //             "class": "k-disabled-check"
+                        //             },
+                    },
                     { field:"label", title: "Loading" },
-                    { field: "edited", title:"Editor"},
+                    { field: "EditedBy", title:"Editor"},
                 ]
             });
         }
