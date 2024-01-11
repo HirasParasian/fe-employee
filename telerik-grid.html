@@ -97,15 +97,18 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2 mt-5">
+            <div class="col-3 mt-2">
                 <div class="k-form-field-wrap" style="overflow-y: auto; height: 300px;">
-                    <ul id="checkboxgroup"></ul>
+                    <!-- <ul id="checkboxgroup"></ul> -->
+                    <div id="grid_checkbox"></div>
+                </div>
+                <div>
                 </div>
                 <div>
                     <button class="btn btn-primary" onclick="filterTable()">Check</button>
                 </div>
             </div>
-            <div class="col-10">
+            <div class="col-9">
                 <div id="example container-fluid">
                     <div class="demo-section  mx-3">
                         <div id="tabstrip">
@@ -157,6 +160,7 @@
     </div>
     <script>
         var newItem;
+        var LoadingSelected = []
         $('#expand').click(function(e){
           var grid = $("#grid").data("kendoGrid");
           $( ".k-master-row" ).each(function( index ) {
@@ -308,10 +312,10 @@
             console.log("UPDATE2")
         }
         const filterTable = () =>{
-            var checkGroup = $("#checkboxgroup").getKendoCheckBoxGroup();
-            console.log(checkGroup.value());
+            //var checkGroup = $("#checkboxgroup").getKendoCheckBoxGroup();
+            //console.log(checkGroup.value());
             dataTables = DATAX_FIX.filter(e=>{
-                if( checkGroup.value().includes(e.loadingEqp)){
+                if( LoadingSelected.includes(e.loadingEqp)){
                     return e;
                 }
             })
@@ -431,6 +435,7 @@
             generateTab()
             generateCheckbox()
             option()
+            generateCheckData()
             
         });
         let idData = ""
@@ -629,6 +634,42 @@
 
         const changeOption = (obj) =>{
             $(obj)
+        }
+        function onReadCB(options) {
+            let dataCheckbox = []
+            DATAX_FIX.forEach(e => {
+                dataCheckbox.push({
+                    label:e.loadingEqp,
+                    value:e.loadingEqp,
+                    edited:"",
+                })
+            });
+            options.success(dataCheckbox);
+        }
+        const generateCheckData = () => {
+            $("#grid_checkbox").kendoGrid({
+                dataSource: {
+                    pageSize: 10,
+                    transport: {
+                        read: onReadCB,
+                    },
+                    schema: {
+                        model: {
+                            id: "value"
+                        }
+                    }
+                },
+                persistSelection: true,
+                change: thisChange,
+                columns: [
+                    { selectable: true, width: "50px" },
+                    { field:"label", title: "Loading" },
+                    { field: "edited", title:"Editor"},
+                ]
+            });
+        }
+        function thisChange(arg) {
+            LoadingSelected = this.selectedKeyNames()
         }
     </script>
 
