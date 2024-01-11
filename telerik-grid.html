@@ -8,6 +8,7 @@
     <script src="https://kendo.cdn.telerik.com/2023.3.1114/js/kendo.all.min.js"></script>
     <script src="/data.js"></script>
     <script src="/data-kota.js"></script>
+    <script src="/json-data.js"></script>
     <script src="/editor.js"></script>
 
     
@@ -292,6 +293,11 @@
             });
         }
         function onRead2(options) {
+            //dataTables = dataTable
+            dataTables = dataTables.map((e,i)=>{
+                e.id = i+1
+                return e
+            })
             options.success(dataTables);
         }
         var crudServiceBaseUrl = "https://demos.telerik.com/kendo-ui/service"
@@ -402,8 +408,17 @@
                             var tr = $(e.target).closest("tr"); // get the current table row (tr)
                             // get the data bound to the current table row
                             newItem = this.dataItem(tr);
-                            dataTable.push(DATAX_FIX[0])
-                            console.log("masuk")
+                            let copy = [] ;
+                            dataTables.forEach(e=>{
+                                if(e.id == newItem.id){
+                                    copy.push(e)
+                                }
+                            })
+                            let datay = copy[0]
+                            datay['id'] = 99;
+                            console.log(datay)
+                            dataTable.push(datay)
+                            dataTables.push(datay)
                             generateTable()
                             //this.addRow()
                             }
@@ -420,9 +435,8 @@
         });
         let idData = ""
         function onRead(options) {
-            console.log(dataTable)
-            console.log("On Read")
-            let filter_data = dataTable.filter(a=>{if(a.loadingEqp == idData){
+            // console.log(dataTable)
+            let filter_data = dataTable.filter(a=>{if(a.id == idData){
                 return a.data
             }})
             if(filter_data.length){
@@ -448,7 +462,7 @@
             console.log("DATA BOUND")
         }
         function detailInit(e) {
-            idData = e.data.loadingEqp
+            idData = e.data.id
             $("<div  style='width:1000px' />").appendTo(e.detailCell).kendoGrid({
                 editable: "incell",
                 navigatable: true,
