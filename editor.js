@@ -5,7 +5,7 @@ function clientCategoryEditor(container, options) {
         .kendoDropDownList({
             autoBind: true,
             filter: "contains",
-            optionLabel: 'Shift',
+            optionLabel: 'Operator',
             dataTextField: "OperatorName",
             dataValueField: "OperatorID",
             change:ChangeFunction,
@@ -27,7 +27,7 @@ function ProvinsiEditor(container, options) {
         .kendoDropDownList({
             autoBind: true,
             filter: "contains",
-            optionLabel: 'Shift',
+            optionLabel: 'Provinsi',
             dataTextField: "ProvName",
             dataValueField: "ProvID",
             change:ChangeFunction,
@@ -56,7 +56,7 @@ function KotaEditor(container, options) {
         .kendoDropDownList({
             autoBind: true,
             filter: "contains",
-            optionLabel: 'Shift',
+            optionLabel: 'Kota',
             dataTextField: "KotaName",
             dataValueField: "KotaID",
             change:ChangeFunction,
@@ -73,7 +73,7 @@ const StartHourEditor = (container,options) =>{
     .appendTo(container)
     .kendoTimePicker({
         dateInput: true,
-        
+
   });
 }
 

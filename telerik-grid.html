@@ -460,19 +460,17 @@
                     //optionTable()
                 },
                 save: function (e) {
-                    console.log("MASUK SAVE")
-                    console.log(e.values)
-                            if (e.values.hasOwnProperty("start_hour") ||
-                                 e.values.hasOwnProperty("end_hour")) {
-                                var totalSpan = e.container.closest("TR").find(".totalSpan");
-                                if (e.values.hasOwnProperty("start_hour")) {
-                                    totalSpan.html(e.values.start_hour * e.model.end_hour);
-                                }
-                                else {
-                                    totalSpan.html(e.values.start_hour * e.model.end_hour);
-                                }
-                            }
-                        },
+                    if (e.values.hasOwnProperty("start_hour") ||
+                            e.values.hasOwnProperty("end_hour")) {
+                        var totalSpan = e.container.closest("TR").find(".totalSpan");
+                        if (e.values.hasOwnProperty("start_hour")) {
+                            totalSpan.html(e.values.start_hour * e.model.end_hour);
+                        }
+                        else {
+                            totalSpan.html(e.values.end_hour * e.model.start_hour);
+                        }
+                    }
+                },
                 dataBound: onDataBound,    
                 dataSource : new kendo.data.DataSource({
                     batch: true,
@@ -594,13 +592,13 @@
                         editor: KotaEditor ,
                     },
                     { 
-                        title: "Start Hour",
+                        title: "Harga",
                         field: "start_hour", 
                         format: "{0:HH:mm}",
                         width: "110px",
                     },
-                    { title: "End Hour",field: "end_hour", width: "110px" },
-                    { title: "Total Hour",template: "<span class='totalSpan'>#= start_hour * end_hour #</span>", editable: false , width: "110px" },
+                    { title: "Qty",field: "end_hour", width: "110px" },
+                    { title: "Total",template: "<span class='totalSpan'>#= start_hour * end_hour #</span>", editable: false , width: "110px" },
                     { title: "Rit",field: "rit", width: "110px" },
                     { title: "Cap",field: "cap", width: "110px" },
                     { title: "Measurement",field: "measurement", width: "110px" },
