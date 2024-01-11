@@ -194,6 +194,8 @@ let DATAX_FIX = [
                         OperatorName: "Syaifullah - 11"
                       },
                     OperatorID: 1,
+                    Provinsi : "Aceh",
+                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -211,6 +213,8 @@ let DATAX_FIX = [
                         OperatorName: "Wijaya Agung - 11"
                       },
                     OperatorID: 2,
+                    Provinsi : "Aceh",
+                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -240,6 +244,8 @@ let DATAX_FIX = [
                         OperatorName: "Syaifullah - 11"
                       },
                     OperatorID: 1,
+                    Provinsi : "Aceh",
+                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -256,6 +262,8 @@ let DATAX_FIX = [
                         OperatorName: "Wijaya Agung - 11"
                       },
                     OperatorID: 2,
+                    Provinsi : "Aceh",
+                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -285,6 +293,8 @@ let DATAX_FIX = [
                         OperatorName: "Syaifullah - 11"
                       },
                     OperatorID: 1,
+                    Provinsi : "Aceh",
+                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -301,6 +311,8 @@ let DATAX_FIX = [
                         OperatorName: "Wijaya Agung - 11"
                       },
                     OperatorID: 2,
+                    Provinsi : "Aceh",
+                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -330,6 +342,8 @@ let DATAX_FIX = [
                         OperatorName: "Syaifullah - 11"
                       },
                     OperatorID: 1,
+                    Provinsi : "Aceh",
+                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -346,6 +360,8 @@ let DATAX_FIX = [
                         OperatorName: "Wijaya Agung - 11"
                       },
                     OperatorID: 2,
+                    Provinsi : "Aceh",
+                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -375,6 +391,8 @@ let DATAX_FIX = [
                         OperatorName: "Syaifullah - 11"
                       },
                     OperatorID: 1,
+                    Provinsi : "Aceh",
+                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -389,7 +407,9 @@ let DATAX_FIX = [
                     Operator: {
                         OperatorID: 2,
                         OperatorName: "Wijaya Agung - 11"
-                      },
+                    },
+                    Provinsi : "Aceh",
+                    Kota : "Kota Banda Aceh",
                     OperatorID: 2,
                     rit : "1",
                     cap : "41.21",
@@ -420,6 +440,8 @@ let DATAX_FIX = [
                         OperatorName: "Wijaya Agung - 11"
                       },
                     OperatorID: 2,
+                    Provinsi : "Aceh",
+                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -436,6 +458,8 @@ let DATAX_FIX = [
                         OperatorName: "Syaifullah - 11"
                       },
                     OperatorID: 1,
+                    Provinsi : "Aceh",
+                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
