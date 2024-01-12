@@ -38,7 +38,7 @@ function ProvinsiEditor(container, options) {
     console.log(options)
 }
 function KotaEditor(container, options) {
-    let provinsi = options.model.Provinsi
+    let provinsi = options.model.Provinsi.ProvName
     console.log(options.model)
     let kota = KOTA_DATA.filter(e=>{
         if(e.provinsi == provinsi){
