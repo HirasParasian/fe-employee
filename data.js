@@ -300,3 +300,15 @@ var categories = [{
     OperatorID: 8,
     OperatorName: "Seafood"
 }];
+
+var iiii = [{
+    nama : 1,
+    no : 1,
+}]
+iiii[0]["id"] = 9
+
+
+var kkk = iiii.slice()
+kkk[0]["id"] = 10
+
+console.log([...iiii,])

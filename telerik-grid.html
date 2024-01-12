@@ -178,8 +178,14 @@
             grid.collapseRow(this);
           });
         })
-        var dataTable = DATAX_FIX;
-        var dataTables = DATAX_FIX;
+        var dataTable = DATAX_FIX.map((e,i)=>{
+                e.id = i+1
+                return e
+            });
+        var dataTables = DATAX_FIX.map((e,i)=>{
+                e.id = i+1
+                return e
+            });;
         const generateCheckbox = () =>{
             let dataCheckbox = []
             DATAX_FIX.forEach(e => {
@@ -301,11 +307,7 @@
             });
         }
         function onRead2(options) {
-            //dataTables = dataTable
-            dataTables = dataTables.map((e,i)=>{
-                e.id = i+1
-                return e
-            })
+            console.log(dataTables,"3")
             options.success(dataTables);
         }
         var crudServiceBaseUrl = "https://demos.telerik.com/kendo-ui/service"
@@ -318,11 +320,13 @@
         const filterTable = () =>{
             //var checkGroup = $("#checkboxgroup").getKendoCheckBoxGroup();
             //console.log(checkGroup.value());
-            dataTables = DATAX_FIX.filter(e=>{
-                if( LoadingSelected.includes(e.loadingEqp)){
+            console.log(dataTables,"1")
+            dataTables = dataTable.filter(e=>{
+                if(LoadingSelected.includes(e.loadingEqp)){
                     return e;
                 }
             })
+            console.log(dataTables,"2")
             generateTable()
         }
         const generateTable = (data) =>{
@@ -412,25 +416,29 @@
                     { command: [{
                             name: "Copy",
                             click: function(e) {
-                            // prevent page scroll position change
-                            e.preventDefault();
-                            // e.target is the DOM element representing the button
-                            var tr = $(e.target).closest("tr"); // get the current table row (tr)
-                            // get the data bound to the current table row
-                            newItem = this.dataItem(tr);
-                            let copy = [] ;
-                            dataTables.forEach(e=>{
-                                if(e.id == newItem.id){
-                                    copy.push(e)
-                                }
-                            })
-                            let datay = copy[0]
-                            datay['id'] = 99;
-                            console.log(datay)
-                            dataTable.push(datay)
-                            dataTables.push(datay)
-                            generateTable()
-                            //this.addRow()
+                                
+                                // prevent page scroll position change
+                                e.preventDefault();
+                                // e.target is the DOM element representing the button
+                                var tr = $(e.target).closest("tr"); // get the current table row (tr)
+                                // get the data bound to the current table row
+                                newItem = this.dataItem(tr);
+                                console.log(newItem)
+                                let copy = [] ;
+                                let newDataTable = JSON.parse(JSON.stringify(dataTable)); 
+                                newDataTable.forEach(e=>{
+                                    if(e.id == newItem.id){
+                                        copy.push(e)
+                                    }
+                                })
+                                console.log(copy)
+                                copy[0]['id'] = newDataTable.length+1
+                                //console.log(datay)
+                                console.log(newDataTable)
+                                dataTable.push(copy[0])
+                                dataTables.push(copy[0])
+                                generateTable()
+                                //this.addRow()
                             }
                         }]
                     },
