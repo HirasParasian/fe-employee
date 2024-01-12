@@ -546,8 +546,8 @@
                                 haulingEq: { type: "string" },
                                 Operator: { 
                                     defaultValue: {
-                                        OperatorID: 8,
-                                        OperatorName: "Seafood"
+                                        OperatorID: "",
+                                        OperatorName: ""
                                     }
                                 },
                                 Provinsi: { 
@@ -604,24 +604,23 @@
                     },
                     { 
                         title: "Provinsi",
-                        field: "Provinsi", 
+                        field: "Provinsi.ProvName", 
                         width: 180,
                         editor: ProvinsiEditor ,
                     },
                     { 
                         title: "Kota",
-                        field: "Kota", 
+                        field: "Kota.KotaName", 
                         width: 180,
                         editor: KotaEditor ,
                     },
                     { 
                         title: "Harga",
                         field: "start_hour", 
-                        format: "{0:HH:mm}",
                         width: "110px",
                     },
                     { title: "Qty",field: "end_hour", width: "110px" },
-                    { title: "Total",template: "<span class='totalSpan'>#= start_hour * end_hour #</span>", editable: false , width: "110px" },
+                    { title: "Total",template: "<span class='totalSpan'>#= ((data.start_hour?start_hour:0) * (data.end_hour?end_hour:0)) #</span>", editable: false , width: "110px" },
                     { title: "Rit",field: "rit", width: "110px" },
                     { title: "Cap",field: "cap", width: "110px" },
                     { title: "Measurement",field: "measurement", width: "110px" },

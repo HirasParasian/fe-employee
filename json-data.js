@@ -17,10 +17,16 @@ let DATAX_FIX = [
                         OperatorName: "Syaifullah - 11"
                       },
                     OperatorID: 1,
-                    Provinsi : "Aceh",
+                    Provinsi : {
+                        ProvID : "Aceh",
+                        ProvName : "Aceh"
+                    },
+                    Kota : {
+                        KotaID :  "Kota Banda Aceh",
+                        KotaName :  "Kota Banda Aceh",
+                    },
                     start_hour:1,
                     end_hour:2,
-                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -38,10 +44,16 @@ let DATAX_FIX = [
                         OperatorName: "Wijaya Agung - 11"
                       },
                     OperatorID: 2,
-                    Provinsi : "Aceh",
+                    Provinsi : {
+                        ProvID : "Aceh",
+                        ProvName : "Aceh"
+                    },
+                    Kota : {
+                        KotaID :  "Kota Banda Aceh",
+                        KotaName :  "Kota Banda Aceh",
+                    },
                     start_hour:1,
                     end_hour:2,
-                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -71,10 +83,16 @@ let DATAX_FIX = [
                         OperatorName: "Syaifullah - 11"
                       },
                     OperatorID: 1,
-                    Provinsi : "Aceh",
+                    Provinsi : {
+                        ProvID : "Aceh",
+                        ProvName : "Aceh"
+                    },
+                    Kota : {
+                        KotaID :  "Kota Banda Aceh",
+                        KotaName :  "Kota Banda Aceh",
+                    },
                     start_hour:1,
                     end_hour:2,
-                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -91,10 +109,16 @@ let DATAX_FIX = [
                         OperatorName: "Wijaya Agung - 11"
                       },
                     OperatorID: 2,
-                    Provinsi : "Aceh",
+                    Provinsi : {
+                        ProvID : "Aceh",
+                        ProvName : "Aceh"
+                    },
+                    Kota : {
+                        KotaID :  "Kota Banda Aceh",
+                        KotaName :  "Kota Banda Aceh",
+                    },
                     start_hour:1,
                     end_hour:2,
-                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -124,10 +148,16 @@ let DATAX_FIX = [
                         OperatorName: "Syaifullah - 11"
                       },
                     OperatorID: 1,
-                    Provinsi : "Aceh",
+                    Provinsi : {
+                        ProvID : "Aceh",
+                        ProvName : "Aceh"
+                    },
+                    Kota : {
+                        KotaID :  "Kota Banda Aceh",
+                        KotaName :  "Kota Banda Aceh",
+                    },
                     start_hour:1,
                     end_hour:2,
-                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -144,10 +174,16 @@ let DATAX_FIX = [
                         OperatorName: "Wijaya Agung - 11"
                       },
                     OperatorID: 2,
-                    Provinsi : "Aceh",
+                    Provinsi : {
+                        ProvID : "Aceh",
+                        ProvName : "Aceh"
+                    },
+                    Kota : {
+                        KotaID :  "Kota Banda Aceh",
+                        KotaName :  "Kota Banda Aceh",
+                    },
                     start_hour:1,
                     end_hour:2,
-                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -177,10 +213,16 @@ let DATAX_FIX = [
                         OperatorName: "Syaifullah - 11"
                       },
                     OperatorID: 1,
-                    Provinsi : "Aceh",
+                    Provinsi : {
+                        ProvID : "Aceh",
+                        ProvName : "Aceh"
+                    },
+                    Kota : {
+                        KotaID :  "Kota Banda Aceh",
+                        KotaName :  "Kota Banda Aceh",
+                    },
                     start_hour:1,
                     end_hour:2,
-                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -197,10 +239,16 @@ let DATAX_FIX = [
                         OperatorName: "Wijaya Agung - 11"
                       },
                     OperatorID: 2,
-                    Provinsi : "Aceh",
+                    Provinsi : {
+                        ProvID : "Aceh",
+                        ProvName : "Aceh"
+                    },
+                    Kota : {
+                        KotaID :  "Kota Banda Aceh",
+                        KotaName :  "Kota Banda Aceh",
+                    },
                     start_hour:1,
                     end_hour:2,
-                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -230,10 +278,16 @@ let DATAX_FIX = [
                         OperatorName: "Syaifullah - 11"
                       },
                     OperatorID: 1,
-                    Provinsi : "Aceh",
                     start_hour:1,
                     end_hour:2,
-                    Kota : "Kota Banda Aceh",
+                    Provinsi : {
+                        ProvID : "Aceh",
+                        ProvName : "Aceh"
+                    },
+                    Kota : {
+                        KotaID :  "Kota Banda Aceh",
+                        KotaName :  "Kota Banda Aceh",
+                    },
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -249,10 +303,16 @@ let DATAX_FIX = [
                         OperatorID: 2,
                         OperatorName: "Wijaya Agung - 11"
                     },
-                    Provinsi : "Aceh",
+                    Provinsi : {
+                        ProvID : "Aceh",
+                        ProvName : "Aceh"
+                    },
+                    Kota : {
+                        KotaID :  "Kota Banda Aceh",
+                        KotaName :  "Kota Banda Aceh",
+                    },
                     start_hour:1,
                     end_hour:2,
-                    Kota : "Kota Banda Aceh",
                     OperatorID: 2,
                     rit : "1",
                     cap : "41.21",
@@ -283,10 +343,16 @@ let DATAX_FIX = [
                         OperatorName: "Wijaya Agung - 11"
                       },
                     OperatorID: 2,
-                    Provinsi : "Aceh",
+                    Provinsi : {
+                        ProvID : "Aceh",
+                        ProvName : "Aceh"
+                    },
+                    Kota : {
+                        KotaID :  "Kota Banda Aceh",
+                        KotaName :  "Kota Banda Aceh",
+                    },
                     start_hour:1,
                     end_hour:2,
-                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
@@ -303,10 +369,16 @@ let DATAX_FIX = [
                         OperatorName: "Syaifullah - 11"
                       },
                     OperatorID: 1,
-                    Provinsi : "Aceh",
+                    Provinsi : {
+                        ProvID : "Aceh",
+                        ProvName : "Aceh"
+                    },
+                    Kota : {
+                        KotaID :  "Kota Banda Aceh",
+                        KotaName :  "Kota Banda Aceh",
+                    },
                     start_hour:1,
                     end_hour:2,
-                    Kota : "Kota Banda Aceh",
                     rit : "1",
                     cap : "41.21",
                     measurement:"82.66",
