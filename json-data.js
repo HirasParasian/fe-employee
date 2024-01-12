@@ -391,13 +391,3 @@ let DATAX_FIX = [
         ]
     }
 ]
-
-let xn = DATAX_FIX.map((e,i)=>{
-    e.id = i+1
-    return e
-})
-console.log(xn)
-
-let copy = xn.filter(e=>{if(e.id==2){return e}})[0]
-copy.id=99
-console.log(copy)
