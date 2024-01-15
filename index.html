@@ -3,869 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hiras Parasian</title>
-    <!-- Custom Google font-->
-    <link rel="icon" type="image/x-icon" href="/Assets/img/profile.jpg">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Demo DDM</title>
+    
+    <link href="/index.css" rel="stylesheet" />
+
+    <!-- <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script> -->
+    <!-- Used to add modal loading indicator for igGrid -->
+    <script src="https://www.igniteui.com/js/grid-modal-loading-inicator.js"></script>
+    <!-- Ignite UI for jQuery Required Combined CSS Files -->
+    <link href="https://cdn-na.infragistics.com/igniteui/2023.1/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
+    <link href="https://cdn-na.infragistics.com/igniteui/2023.1/latest/css/structure/infragistics.css" rel="stylesheet" />
+    
+    <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+
+    <!-- Ignite UI for jQuery Required Combined JavaScript Files -->
+    <script src="https://cdn-na.infragistics.com/igniteui/2023.1/latest/js/infragistics.core.js"></script>
+    <script src="https://cdn-na.infragistics.com/igniteui/2023.1/latest/js/infragistics.lob.js"></script>
+
+    <!-- JavaScript Import File -->
+    <script type="module" src="/firebase.js"></script>
+    <script src="/infragistics-config.js"></script>
+    <script src="/vanila-function.js"></script>
+
+    <!-- bootstrap & Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
     <style>
-        body{
-            background-color: #2b2b2b;
+        /* .tbl-CB th,
+        .tbl-CB td{
+            border: 1px solid gray;
+        } */
+        input[type="checkbox"]:disabled {
+            background: #aeaeae;
         }
-        * {
-        margin: 0;
-        padding: 0;
-        }
-
-        .home-screen {
-        background-image: url("https://i.ibb.co/pXBdfY1/bg.jpg");
-        background-size: cover;
-        overflow: hidden;
-        height: 100vh;
-        } 
-
-        
-        .feature {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        height: 3rem;
-        width: 3rem;
-        font-size: 1.5rem;
-        }
-
-        .profile {
-        position: relative;
-        height: 75vw;
-        width: 75vw;
-        border-radius: 5vw;
-        margin-top: 0.2vw;
-        max-height: 40rem;
-        max-width: 40rem;
-        }
-        .profile .profile-img {
-        height: 70vw;
-        max-height: 40rem;
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        border-radius: 30%;
-        }
-        .profile .dots-1 {
-        position: absolute;
-        width: 3vw;
-        right: 1.5vw;
-        top: 4vw;
-        }
-        .profile .dots-1 svg {
-        fill: #fff;
-        }
-        .profile .dots-2 {
-        position: absolute;
-        width: 3vw;
-        right: -4vw;
-        top: 6.05vw;
-        }
-        .profile .dots-2 svg {
-        fill: #1e30f3;
-        }
-        .profile .dots-3 {
-        position: absolute;
-        width: 3vw;
-        left: 1.5vw;
-        bottom: 6.05vw;
-        }
-        .profile .dots-3 svg {
-        fill: #fff;
-        }
-        .profile .dots-4 {
-        position: absolute;
-        width: 3vw;
-        left: -4vw;
-        bottom: 4vw;
-        }
-        .profile .dots-4 svg {
-        fill: #1e30f3;
-        }
-
-        @media (min-width: 576px) {
-        .profile {
-            height: 60vw;
-            width: 60vw;
-        }
-        .profile .profile-img {
-            height: 55vw;
-        }
-        .profile .dots-1 {
-            width: 3vw;
-            right: 1.5vw;
-        }
-        .profile .dots-2 {
-            width: 3vw;
-            right: -4vw;
-        }
-        .profile .dots-3 {
-            width: 3vw;
-            left: 1.5vw;
-        }
-        .profile .dots-4 {
-            width: 3vw;
-            left: -4vw;
-        }
-        }
-        @media (min-width: 768px) {
-        .profile {
-            height: 50vw;
-            width: 50vw;
-        }
-        .profile .profile-img {
-            height: 45vw;
-        }
-        .profile .dots-1 {
-            width: 3vw;
-            right: 1.5vw;
-        }
-        .profile .dots-2 {
-            width: 3vw;
-            right: -4vw;
-        }
-        .profile .dots-3 {
-            width: 3vw;
-            left: 1.5vw;
-        }
-        .profile .dots-4 {
-            width: 3vw;
-            left: -4vw;
-        }
-        }
-        @media (min-width: 992px) {
-        .profile {
-            height: 40vw;
-            width: 40vw;
-        }
-        .profile .profile-img {
-            height: 35vw;
-        }
-        .profile .dots-1 {
-            width: 1.5vw;
-            right: 0.75vw;
-        }
-        .profile .dots-2 {
-            width: 1.5vw;
-            right: -2vw;
-        }
-        .profile .dots-3 {
-            width: 1.5vw;
-            left: 0.75vw;
-        }
-        .profile .dots-4 {
-            width: 1.5vw;
-            left: -2vw;
-        }
-        }
-        @media (min-width: 1200px) {
-        .profile {
-            height: 35vw;
-            width: 35vw;
-        }
-        .profile .profile-img {
-            height: 30vw;
-        }
-        .profile .dots-1 {
-            width: 1.5vw;
-            right: 0.75vw;
-        }
-        .profile .dots-2 {
-            width: 1.5vw;
-            right: -2vw;
-        }
-        .profile .dots-3 {
-            width: 1.5vw;
-            left: 0.75vw;
-        }
-        .profile .dots-4 {
-            width: 1.5vw;
-            left: -2vw;
-        }
-        }
-
-        /* Hide scrollbar for Chrome, Safari and Opera */
-        body::-webkit-scrollbar {
-        display: none;
-        }
-
-        /* Hide scrollbar for IE, Edge and Firefox */
-        body {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
-        }
-
-        .taskbar {
-        background-color: #2b2b2b;
-        width: 100%;
-        position: fixed;
-        bottom: 0;
-        display: flex;
-        z-index: 110;
-        justify-content: space-between;
-        }
-
-        .icons-r{
-            margin: 3px 0;
-        }
-        .icons .col{
-            padding :7px;
-            margin-left: 4px;
-            margin-right: 4px;
-        }
-        .icons-r .col{
-            padding: 5px;
-        }
-        #clock,#date{
-            font-size: 10px;
-            white-space:nowrap ;
-            margin: 0px;
-        }
-        .col .fa-sm,.col p{
-            color: #f3f3f3;
-        }
-        .icons .col:hover{
-            background-color: #383838;
-            border-radius: 5px;
-        }
-
     </style>
 </head>
 <body>
-    <div class="home-screen" id="home-html"></div>
-    <div class="about-html" style="display: none;" id="about-html">
-        <header class="py-0 bg-dark text-light">
-            <div class="container px-5 pb-5">
-                <div class="row gx-5 align-items-center">
-                    <div class="col-xxl-5">
-                        <!-- Header text content-->
-                        <div class="text-center text-xxl-start">
-                            <div class="fs-3 fw-light text-light">My Portfolio</div>
-                            <h1 class="display-3 fw-bolder"><span class="text-gradient d-inline">Get online and grow fast</span></h1>
-                        </div>
-                    </div>
-                    <div class="col-xxl-7">
-                        <!-- Header profile picture-->
-                        <div class="d-flex justify-content-center mt-xxl-0">
-                            <div class="profile bg-gradient-primary-to-secondary">
-                                <!-- TIP: For best results, use a photo with a transparent background like the demo example below-->
-                                <!-- Watch a tutorial on how to do this on YouTube (link)-->
-                                <img class="profile-img" src="Assets/img/profile.jpg" alt="..."/>
-                                <div class="dots-1">
-                                    <!-- SVG Dots-->
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
-                                        <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
-                                            <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
-                                            <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
-                                            <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
-                                            <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
-                                            <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
-                                            <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
-                                            <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
-                                            <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
-                                            <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
-                                            <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
-                                            <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
-                                            <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
-                                            <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
-                                            <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
-                                            <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
-                                            <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
-                                            <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
-                                            <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
-                                            <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
-                                            <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
-                                        </g>
-                                    </svg>
-                                    <!-- END of SVG dots-->
-                                </div>
-                                <div class="dots-2">
-                                    <!-- SVG Dots-->
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
-                                        <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
-                                            <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
-                                            <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
-                                            <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
-                                            <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
-                                            <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
-                                            <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
-                                            <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
-                                            <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
-                                            <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
-                                            <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
-                                            <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
-                                            <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
-                                            <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
-                                            <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
-                                            <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
-                                            <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
-                                            <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
-                                            <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
-                                            <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
-                                            <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
-                                        </g>
-                                    </svg>
-                                    <!-- END of SVG dots-->
-                                </div>
-                                <div class="dots-3">
-                                    <!-- SVG Dots-->
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
-                                        <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
-                                            <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
-                                            <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
-                                            <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
-                                            <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
-                                            <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
-                                            <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
-                                            <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
-                                            <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
-                                            <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
-                                            <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
-                                            <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
-                                            <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
-                                            <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
-                                            <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
-                                            <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
-                                            <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
-                                            <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
-                                            <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
-                                            <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
-                                            <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
-                                        </g>
-                                    </svg>
-                                    <!-- END of SVG dots-->
-                                </div>
-                                <div class="dots-4">
-                                    <!-- SVG Dots-->
-                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
-                                        <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
-                                            <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
-                                            <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
-                                            <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
-                                            <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
-                                            <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
-                                            <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
-                                            <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
-                                            <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
-                                            <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
-                                            <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
-                                            <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
-                                            <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
-                                            <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
-                                            <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
-                                            <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
-                                            <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
-                                            <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
-                                            <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
-                                            <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
-                                            <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
-                                        </g>
-                                    </svg>
-                                    <!-- END of SVG dots-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- About Section-->
-        <section class="bg-dark text-light pb-5">
-            <div class="container px-5">
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-xxl-8">
-                        <div class="text-center my-5">
-                            <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">About Me</span></h2>
-                            <p class="lead fw-light mb-4">My name Hiras Parasian Doloksaribu and I am Software Engineer.</p>
-                            <p class="text-light">As a software engineer, my passion lies in using technology to solve complex problems and create innovative solutions. With a strong background in programming languages such as JavaScript, Python, and C#, I have extensive experience in software development, from ideation to deployment.</p>
-                            <div class="d-flex justify-content-center fs-2 gap-4">
-                                <a class="text-gradient" href="https://www.instagram.com/hiras.pds/"><i class="bi bi-instagram"></i></a>
-                                <a class="text-gradient" href="https://www.linkedin.com/in/hiras-parasian-doloksaribu/"><i class="bi bi-linkedin"></i></a>
-                                <a class="text-gradient" href="https://github.com/HirasParasian"><i class="bi bi-github"></i></a>
-                            </div>
-                        </div>
-                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
-                            <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" onclick="goToPage('resume-html')">Resume</a>
-                            <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" onclick="goToPage('resume-html')">Projects</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    <div class="container px-5 my-5 resume-html" style="display: none;" id="resume-html">
-        <div class="text-center mb-5">
-            <h1 class="display-5 fw-bolder mb-0"><span class="text-light d-inline">Resume</span></h1>
+    <div class="container-fluid">
+        <div class="row mt-5 container-fluid">
+            <h1>Lorem Ipsum</h1>
         </div>
-        <div class="row gx-5 justify-content-center">
-            <div class="col-lg-11 col-xl-9 col-xxl-8">
-                <!-- Experience Section-->
-                <section>
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h2 class="text-primary fw-bolder mb-0">Experience</h2>
-                        <!-- Download resume button-->
-                        <!-- Note: Set the link href target to a PDF file within your project-->
-                        <a class="btn btn-primary px-4 py-3" href="/Assets/cv/CV-Hiras Parasian.pdf">
-                            <div class="d-inline-block bi bi-download me-2"></div>
-                            Download Resume
-                        </a>
-                    </div>
-                    <!-- Experience Card 1-->
-                    <div class="card bg-dark shadow border-0 rounded-4 mb-5">
-                        <div class="card-body p-5">
-                            <div class="row align-items-center gx-5">
-                                <div class="col text-center  text-lg-start mb-4 mb-lg-0">
-                                    <div class="bg-secondary p-4 rounded-4">
-                                        <div class="text-primary fw-bolder mb-2">Nov 2022 - Present</div>
-                                        <div class="small fw-bolder">Fullstack Developer</div>
-                                        <div class="small text-muted">PT. Deltadata Mandiri</div>
-                                        <div class="small text-muted">Jakarta Selatan</div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8 text-light">
-                                    <div>
-                                        &#x2022; Developing, and maintaining web applications from start to finish, including user interfaces, business logic, and database integration.
-                                        <br>
-                                        &#x2022; Performing front- end development using HTML, CSS, CSS Framework like Bootstrap and JavaScript, along with frameworks like
-                                        React, Next.
-                                        <br>
-                                        &#x2022; Implementing server-side programming using languages such as Node.js, C#.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Experience Card 2-->
-                    <div class="card bg-dark shadow border-0 rounded-4 mb-5">
-                        <div class="card-body p-5">
-                            <div class="row align-items-center gx-5">
-                                <div class="col text-center text-lg-start mb-4 mb-lg-0">
-                                    <div class="bg-secondary p-4 rounded-4">
-                                        <div class="text-primary fw-bolder mb-2">May 2022 - Nov 2022</div>
-                                        <div class="small fw-bolder">Fullstack Developer</div>
-                                        <div class="small text-muted">PT. Konsultan Sistem Managemen Indonesia</div>
-                                        <div class="small text-muted">Cileungsi, Jawa Barat</div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8 text-light">
-                                    <div>
-                                        &#x2022; Developing, and maintaining web applications from start to finish, including user interfaces, business logic, and database integration.
-                                        <br>
-                                        &#x2022; Performing front- end development using HTML, CSS, CSS Framework like Bootstrap and JavaScript, along with frameworks like
-                                        React, Next.
-                                        <br>
-                                        &#x2022; Implementing server-side programming using languages such as Node.js, C#.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Education Section-->
-                <section>
-                    <h2 class="text-secondary fw-bolder mb-4">Education</h2>
-                    <!-- Education Card 1-->
-                    <div class="card bg-dark shadow border-0 rounded-4 mb-5">
-                        <div class="card-body p-5">
-                            <div class="row align-items-center gx-5">
-                                <div class="col text-center text-lg-start mb-4 mb-lg-0">
-                                    <div class="bg-secondary p-4 rounded-4">
-                                        <div class="text-light fw-bolder mb-2">2018 - 2022</div>
-                                        <div class="mb-2">
-                                            <div class="small fw-bolder">Universitas Advent Indonesia</div>
-                                            <div class="small text-muted">Kab. Bandung Barat</div>
-                                        </div>
-                                        <div class="fst-italic">
-                                            <div class="small text-muted">Bachelor Degree</div>
-                                            <div class="small text-muted">Informatics Engineering</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8 text-light"><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus laudantium, voluptatem quis repellendus eaque sit animi illo ipsam amet officiis corporis sed aliquam non voluptate corrupti excepturi maxime porro fuga.</div></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Education Card 2-->
-                    <div class="card bg-dark shadow border-0 rounded-4 mb-5">
-                        <div class="card-body p-5">
-                            <div class="row align-items-center gx-5">
-                                <div class="col text-center text-lg-start mb-4 mb-lg-0">
-                                    <div class="bg-secondary p-4 rounded-4">
-                                        <div class="text-light fw-bolder mb-2">2014 - 2017</div>
-                                        <div class="mb-2">
-                                            <div class="small fw-bolder">SMK Negeri 5 Kota Bekasi</div>
-                                            <div class="small text-muted">Bekasi, Jawa Barat</div>
-                                        </div>
-                                        <div class="fst-italic">
-                                            <div class="small text-muted">Senior High School</div>
-                                            <div class="small text-muted">industrial electronics engineering</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-8 text-light"><div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus laudantium, voluptatem quis repellendus eaque sit animi illo ipsam amet officiis corporis sed aliquam non voluptate corrupti excepturi maxime porro fuga.</div></div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Divider-->
-                <div class="pb-5"></div>
-                <!-- Skills Section-->
-                <section>
-                    <!-- Skillset Card-->
-                    <div class="card shadow border-0 rounded-4 mb-5">
-                        <div class="card-body bg-dark p-5">
-                            <!-- Professional skills list-->
-                            <div class="mb-5">
-                                <div class="d-flex align-items-center mb-4">
-                                    <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-tools"></i></div>
-                                    <h3 class="fw-bolder mb-0"><span class="text-light d-inline">Professional Skills</span></h3>
-                                </div>
-                                <div class="row row-cols-1 row-cols-md-3 mb-4">
-                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Fullstack Developer</div></div>
-                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Software Engineer</div></div>
-                                    <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Web Development</div></div>
-                                </div>
-                                <div class="row row-cols-1 row-cols-md-3">
-                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Mobile Development</div></div>
-                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Wordpress Developer</div></div>
-                                    <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Frontend Developer</div></div>
-                                </div>
-                            </div>
-                            <!-- Languages list-->
-                            <div class="mb-0">
-                                <div class="d-flex align-items-center mb-4">
-                                    <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-code-slash"></i></div>
-                                    <h3 class="fw-bolder mb-0"><span class="text-light d-inline">Languages</span></h3>
-                                </div>
-                                <div class="row row-cols-1 row-cols-md-3 mb-4">
-                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">HTML</div></div>
-                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">CSS</div></div>
-                                    <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">JavaScript</div></div>
-                                </div>
-                                <div class="row row-cols-1 row-cols-md-3 mb-4">
-                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">React.js</div></div>
-                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Next.js</div></div>
-                                    <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Node.js</div></div>
-                                </div>
-                                <div class="row row-cols-1 row-cols-md-3">
-                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Express.js</div></div>
-                                    <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">.Net MVC</div></div>
-                                    <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">React Native</div></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+        <div class="row my-5 container-fluid">
+            <div class="col">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Project ID</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                <!-- <div id="kd-place-chooser" ></div> -->
+            </div>
+            <div class="col">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Daily Plan ID</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                <!-- <div id="kd-place-chooser2" ></div> -->
+            </div>
+            <div class="col">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Actual Prod. ID</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                <!-- <div id="kd-place-chooser3" ></div> -->
+            </div>
+            <div class="col">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Supervisor</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                <!-- <div id="kd-place-chooser4" ></div> -->
+            </div>
+            <div class="col">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Foreman</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                <!-- <div id="kd-place-chooser5" ></div> -->
+            </div>
+            <div class="col">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Date</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                <!-- <div id="kd-place-chooser6" ></div> -->
+            </div>
+            <div class="col">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Shift</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                <!-- <div id="kd-place-chooser7" ></div> -->
             </div>
         </div>
     </div>
-    <div class="project-html" id="project-html" style="display: none;">
-        <section class="py-5">
-            <div class="container px-5 mb-5">
-                <div class="text-center mb-5">
-                    <h1 class="display-5 fw-bolder mb-0"><span class="text-light d-inline">Projects</span></h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <div class="table-responsive tbl-CB">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr class="bg-light">
+                                <th scope="col" width="5%"></th>
+                                <th scope="col" width="40%">Loading</th>
+                                <th scope="col" width="40%">Editor</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
                 </div>
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-11 col-xl-9 col-xxl-8">
-                        <!-- Project Card 1-->
-                        <div class="card bg-dark overflow-hidden shadow rounded-4 border-0 mb-5">
-                            <div class="card-body p-0">
-                                <div class="d-flex align-items-center">
-                                    <div class="p-5 text-light">
-                                        <h2 class="fw-bolder">Work Plan & Budgeting</h2>
-                                        <h5>PT. Pertamina EP</h5>
-                                        <p><strong>C#, .NET MVC, Javascript, Bootstrap, SQL Server</strong></p>
-                                    </div>
-                                    <div class="p-5">
-                                        <img class="img-fluid rounded rounded-3" width="200" src="/Assets/img/pep.jpg" alt="..." />
-                                    </div>
-                                </div>
-                            </div>
+                <div>
+                    <button class="btn btn-primary mt-2" onclick="checkData()">Check</button>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="p-1 border rounded" >
+                    <div id="new-tabs">
+                        <ul class="ps-2">
+                            <li><a href="#activity" ><button class="btn btns">Production Activity</button></a></li>
+                            <li><a href="#support" ><button class="btn btns">Production Support</button></a></li>
+                            <li><a href="#issues" ><button class="btn btns">Production Issues</button></a></li>
+                        </ul>
+                        <div id="activity" class="dashboard">
+                            <!-- <div class="mb-3 p-2 bg-gry">
+                                <button class="btn btn-light mx-1"><i class="fa-solid fa-plus"></i> &nbsp;Loading</button>
+                                <button class="btn btn-light mx-1"><i class="fa-solid fa-plus"></i> &nbsp;Hauling</button>
+                            </div> -->
+                            <table id="hierarchicalGrid"></table>
+                            <!-- <input type="button" id="saveChanges" class="button-style" value="Save Changes" />
+                            <input type="button" id="undo" class="button-style" value="Undo" />
+                            <input type="button" id="redo" class="button-style" value="Redo" /> -->
                         </div>
-                        <!-- Project Card 2-->
-                        <div class="card bg-dark overflow-hidden shadow rounded-4 border-0 mb-5">
-                            <div class="card-body p-0">
-                                <div class="d-flex align-items-center">
-                                    <div class="p-5 text-light">
-                                        <h2 class="fw-bolder">Coal Chain Management - PTM</h2>
-                                        <h5>PT. Borneo Indobara</h5>
-                                        <p><strong>React.JS, Javascript, Bootstrap, Postgre SQL</strong></p>
-                                    </div>
-                                    <div class="py-5 me-5 pe-3">
-                                        <img class="img-fluid rounded rounded-3 bg-light" width="200" src="/Assets/img/borneo.png" alt="..." />
-                                    </div>
-                                </div>
-                            </div>
+                        <div id="support" class="dashboard">
+                            <div>Tab 2</div>
                         </div>
-                        <!-- Project Card 3-->
-                        <div class="card bg-dark overflow-hidden shadow rounded-4 border-0 mb-5">
-                            <div class="card-body p-0">
-                                <div class="d-flex align-items-center">
-                                    <div class="p-5 text-light">
-                                        <h2 class="fw-bolder">Customer Relationship Management</h2>
-                                        <h5>Kementrian PPN/Bappenas</h5>
-                                        <p><strong>Next.JS, Javascript, Bootstrap, MongoDB</strong></p>
-                                    </div>
-                                    <div class="py-5 me-5 pe-3">
-                                        <img class="img-fluid rounded rounded-3 bg-light" width="200" src="/Assets/img/bappenas.png" alt="..." />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Project Card 3-->
-                        <div class="card bg-dark overflow-hidden shadow rounded-4 border-0 mb-5">
-                            <div class="card-body p-0">
-                                <div class="d-flex align-items-center">
-                                    <div class="p-5 text-light">
-                                        <h2 class="fw-bolder">Career Management Online</h2>
-                                        <h5>PT. Astra Honda Motor</h5>
-                                        <p><strong>C#, .NET, Javascript, Metro UI, SQL Server, Oracle</strong></p>
-                                    </div>
-                                    <div class="p-5 mx-4">
-                                        <img class="img-fluid rounded rounded-3 bg-light" width="200" src="/Assets/img/ahm.png" alt="..." />
-                                    </div>
-                                </div>
-                            </div>
+                        <div id="issues" class="dashboard">
+                            <div>Tab 3</div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- Call to action section-->
-        <section class="py-5 bg-gradient-primary-to-secondary text-white">
-            <div class="container px-5 my-5">
-                <div class="text-center">
-                    <h2 class="display-4 fw-bolder mb-4">Let's build something together</h2>
-                    <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" onclick="goToPage('contact-html')">Contact me</a>
-                </div>
-            </div>
-        </section>
-    </div>
-    <div class="contact-html pb-5" id="contact-html" style="display: none;">
-        <section class="bg-dark">
-            <div class="container py-5">
-              <div class="row">
-                <div class="col-lg-4">
-                  <div class="card bg-secondary mb-4">
-                    <div class="card-body bg-secondary text-center">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-                        class="rounded-circle img-fluid" style="width: 150px;">
-                      <h5 class="my-3">Hiras Parasian</h5>
-                      <p class="text-muted mb-1">Full Stack Developer</p>
-                      <p class="text-muted mb-4">Bekasi, West Java</p>
-                      <div class="d-flex justify-content-center mb-2">
-                        <button type="button" class="btn btn-primary">Follow</button>
-                        <button type="button" class="btn btn-outline-primary ms-1">Message</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card bg-secondary mb-4 mb-lg-0">
-                    <div class="card-body bg-secondary p-0">
-                      <ul class="list-group list-group-flush bg-secondary rounded-3">
-                        <li class="list-group-item d-flex bg-secondary justify-content-between align-items-center p-3">
-                          <a class="bg-light p-1 rounded" href="https://hirasparasian.github.io/"><i class="fas fa-globe fa-lg text-warning"></i></a>
-                          <p class="mb-0">hirasparasian.github.io</p>
-                        </li>
-                        <li class="list-group-item bg-secondary d-flex justify-content-between align-items-center p-3">
-                          <a class="bg-light p-1 rounded" href="https://github.com/HirasParasian"><i class="fab fa-github fa-lg" style="color: #333333;"></i></a>
-                          <p class="mb-0">HirasParasian</p>
-                        </li>
-                        <li class="list-group-item bg-secondary d-flex justify-content-between align-items-center p-3">
-                          <a class="bg-light p-1  rounded" href="https://www.instagram.com/hiras.pds/"><i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i></a>
-                          <p class="mb-0">@hiras.pds</p>
-                        </li>
-                        <li class="list-group-item bg-secondary d-flex justify-content-between align-items-center p-3">
-                          <a class="bg-light py-1 px-2 rounded" href="https://web.facebook.com/hiras.krenz/"><i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i></a>
-                          <p class="mb-0">Hiras P Doloksaribu</p>
-                        </li>
-                        <li class="list-group-item bg-secondary d-flex justify-content-between align-items-center p-3">
-                            <a class="bg-light p-1 rounded" href="https://www.linkedin.com/in/hiras-parasian-doloksaribu/"><i class="fab fa-linkedin fa-lg" style="color: #2757db;"></i></a>
-                          <p class="mb-0">Hiras Parasian</p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-8">
-                  <div class="card mb-4 bg-secondary">
-                    <div class="card-body bg-secondary text-light">
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <p class="mb-0">Full Name</p>
-                        </div>
-                        <div class="col-sm-9">
-                          <p class="text-light mb-0">Hiras Parasian Doloksaribu</p>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <p class="mb-0">Email</p>
-                        </div>
-                        <div class="col-sm-9">
-                          <p class="text-light mb-0">hirasparasian@gmail.com</p>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <p class="mb-0">Phone</p>
-                        </div>
-                        <div class="col-sm-9">
-                          <p class="text-light mb-0">(+62) 813-8898-1122</p>
-                        </div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <p class="mb-0">Address</p>
-                        </div>
-                        <div class="col-sm-9">
-                          <p class="text-light mb-0">Bekasi Utara, West Java</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="card bg-secondary mb-5 mb-md-0 py-3">
-                        <div class="card-body bg-secondary text-light">
-                          <p class="mb-1"><span class="text-primary font-italic me-1">Ready</span> for
-                          </p>
-                          <hr class="mb-4">
-                          <hr>
-                          <p class="mb-1" style="font-size: .77rem;">Software Engineer</p>
-                          <hr>
-                          <p class="mt-4 mb-1" style="font-size: .77rem;">Fullstack Developer</p>
-                          <hr>
-                          <p class="mt-4 mb-1" style="font-size: .77rem;">Web Developer</p>
-                          <hr>
-                          <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Developer</p>
-                          <hr>
-                          <p class="mt-4 mb-1" style="font-size: .77rem;">Frontend Developer</p>
-                          <hr>
-                          <p class="mt-4 mb-1" style="font-size: .77rem;">Backend Developer</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card bg-secondary mb-5 mb-md-0 py-3">
-                          <div class="card-body bg-secondary text-light">
-                            <p class="mb-1"><span class="text-primary font-italic me-1">Skills</span> set
-                            </p>
-                            <hr class="mb-4">
-                            <hr>
-                            <p class="mb-1" style="font-size: .77rem;">HTML, CSS, Javascript</p>
-                            <hr>
-                            <p class="mt-4 mb-1" style="font-size: .77rem;">React Native</p>
-                            <hr>
-                            <p class="mt-4 mb-1" style="font-size: .77rem;">React.js, Next.js</p>
-                            <hr>
-                            <p class="mt-4 mb-1" style="font-size: .77rem;">Node.js, Express.js</p>
-                            <hr>
-                            <p class="mt-4 mb-1" style="font-size: .77rem;">C#, .NET Framework</p>
-                            <hr>
-                            <p class="mt-4 mb-1" style="font-size: .77rem;">Boostrap, MetroUI, Tailwind</p>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </section>
-    </div>
-    <div class="taskbar">
-        <div class="row icons-r align-items-center d-none d-sm-flex">
-            <div class="col ms-4">
-                <i class="fa-solid fa-xl text-warning fa-cloud-moon"></i>
-            </div>
-        </div>
-        <div class="row icons align-items-center px-3">
-            <div class="col">
-                <img src="/Assets/Icon/windows.svg" onclick="goToPage('home-html')" alt="windows" height="25" title="HOME">
-            </div>
-            <div class="col">
-                <img src="/Assets/Icon/search.svg" alt="about" onclick="goToPage('about-html')" height="25" title="ABOUT ME">
-            </div>
-            <div class="col">
-                <img src="/Assets/Icon/msstore.svg" alt="msstore" onclick="goToPage('contact-html')" height="25" title="CONTACT">
-            </div>
-            <div class="col">
-                <img src="/Assets/Icon/file.svg" alt="project" onclick="goToPage('project-html')" height="25" title="PROJECT">
-            </div>
-            <div class="col">
-                <img src="/Assets/Icon/edge.svg" onclick="goToPage('resume-html')" alt="resume" height="25" title="RESUME">
-            </div>
-            <div class="col">
-                <img src="/Assets/Icon/vsc.svg" alt="vsc" height="25">
-            </div>
-            <div class="col">
-                <img src="/Assets/Icon/vs.svg" alt="vs" height="25">
-            </div>
-            <div class="col">
-                <img src="/Assets/Icon/chrome.svg" alt="chrome" height="25">
-            </div>
-        </div>
-        <div class="row icons-r align-items-center d-none d-sm-flex">  
-            <div class="col">
-                <i class="fa-solid fa-sm fa-chevron-up"></i>
-            </div>
-            <div class="col">
-                <i class="fa-solid fa-sm fa-wifi"></i>
-            </div>
-            <div class="col">
-                <i class="fa-solid fa-sm fa-volume-high"></i>
-            </div>
-            <div class="col">
-                <i class="fa-solid fa-sm fa-battery-full"></i>
-            </div>
-            <div class="col">
-                <p id="clock"></p>
-                <p id="date"></p>
             </div>
         </div>
     </div>
+    <div class="container-fluid">
 
-    <script type="text/javascript">
-        var clockElement = document.getElementById('clock');
-        var dateElement = document.getElementById('date');
+    </div>
     
-        function clock() {
-            var times = new Date().toLocaleTimeString();
-            var dates = new Date().toLocaleDateString();
-            clockElement.textContent = times;
-            dateElement.textContent = dates;
-        }
-
-        function goToPage(className){
-            resetPage();
-            document.getElementById(className).style.display = '';
-        }
-
-        function resetPage(){
-            document.getElementById("resume-html").style.display = 'none';
-            document.getElementById("home-html").style.display = 'none';
-            document.getElementById("about-html").style.display = 'none';
-            document.getElementById("project-html").style.display = 'none';
-            document.getElementById("contact-html").style.display = 'none';
-        }
-    
-        setInterval(clock, 1000);
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 </body>
 </html>
