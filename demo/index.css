@@ -1,0 +1,44 @@
+.ui-igcombo-wrapper{
+    width: unset;
+}
+.bg-gry{
+    background-color: #E1E2EA;
+}
+.ui-tabs .ui-tabs-nav li.ui-state-active{
+    border: unset;
+    background-color: transparent;
+}
+.ui-state-active .btns{
+    background-color: #1485EF;
+    color: white;
+}
+.ui-tabs .ui-tabs-nav{
+    background-color: transparent !important;
+    border: unset;
+}
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor{
+    color: black;
+}
+.ui-tabs .ui-tabs-nav li.ui-state-default{
+    background-color: transparent !important;
+    border: unset;
+}
+.ui-tabs .ui-tabs-panel{
+    border: unset;
+}
+thead tr:first-child th {
+    border-bottom: none;
+    background-color: #1C1C31 ;
+    color: white;
+}
+tr thead tr:first-child th {
+    border: 0.2px solid #dfdfdf;
+    background-color: #F5F6F6 !important;
+    color: black;
+}
+.ui-iggrid tr.ui-ig-altrecord{
+    background-color: transparent;
+}
+.ui-iggrid-childarea{
+    background-color: #E1E2EA;
+}
