@@ -1,6 +1,8 @@
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+    import { getDatabase, ref, get, set,child, update, remove,onValue }from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyDBVNVvbxwwNSe4PGXsvPt6fnt02eL2Wr0",
@@ -14,10 +16,11 @@
     };
 
     const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app)
+    const db = getDatabase()
+    const dbRefs = ref(db)
     const analytics = getAnalytics(app);
 
-    import{ getDatabase, ref, get, set,child, update, remove,onValue }from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-    const db = getDatabase()
 
     let idc = document.getElementById("idc")
     let email = document.getElementById("email")
@@ -27,6 +30,7 @@
     let updates = document.getElementById("update")
     let deletes = document.getElementById("delete")
     let refs = document.getElementById("refs")
+
 
     const addData = () => {
         console.log("ADD")
@@ -150,7 +154,8 @@
     // add.addEventListener('click',addDummyData)
     // updates.addEventListener('click',updateData)
     // deletes.addEventListener('click',deleteData)
-    // refs.addEventListener('click',retData)
+
+
 
     const dataRealtime = () => {
         const dbRef = ref(db,'Loading')

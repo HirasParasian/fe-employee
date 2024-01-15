@@ -1,3 +1,11 @@
+$(function () {
+    let userAcount = JSON.parse(sessionStorage.getItem('user-info'))
+    console.log(userAcount)
+    if(userAcount == null){
+        console.log("Masuk")
+        window.location.href = "/login.html"
+    }
+})
 const generateEditor = (obj) => {
     let data = []
     obj.forEach(a=>{
