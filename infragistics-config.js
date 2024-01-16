@@ -82,35 +82,35 @@ const generateTables = (obj) => {
                 key: "data",
                 autoCommit:true,
                 aggregateTransactions:true,
-                width: "100%",
+                width: "1000px",
                 autoGenerateColumns: false,
                 primaryKey: "haulingEq",
                 columns: [
-                    { key: "haulingEq", headerText: "Hauling Eq", dataType: "string", width: "20%" },
-                    { key: "operator", headerText: "Operator", dataType: "string", width: "0%", hidden: true },
-                    { key: "rit", headerText: "Rit", dataType: "string", width: "20%" },
-                    { key: "cap", headerText: "Cap", dataType: "string", width: "20%" },
-                    { key: "measurement", headerText: "Measurement", dataType: "string", width: "20%" },
-                    { key: "measured", headerText: "Measured", dataType: "string", width: "20%" },
-                    { key: "dest", headerText: "Dest", dataType: "string", width: "20%" },
-                    { key: "actMeas", headerText: "Act. Meas.", dataType: "string", width: "20%" },
-                    { key: "grade", headerText: "Grade", dataType: "string", width: "20%" },
+                    { key: "haulingEq", headerText: "Hauling Eq", dataType: "string", width: "200px" },
+                    { key: "operator", headerText: "Operator", dataType: "string", width: "200px", hidden: true },
+                    { key: "rit", headerText: "Rit", dataType: "string", width: "200px" },
+                    { key: "cap", headerText: "Cap", dataType: "string", width: "200px" },
+                    { key: "measurement", headerText: "Measurement", dataType: "string", width: "200px" },
+                    { key: "measured", headerText: "Measured", dataType: "string", width: "200px" },
+                    { key: "dest", headerText: "Dest", dataType: "string", width: "200px" },
+                    { key: "actMeas", headerText: "Act. Meas.", dataType: "string", width: "200px" },
+                    { key: "grade", headerText: "Grade", dataType: "string", width: "200px" },
                 ],
                 features: [
-                     {
-                         name: "Responsive",
-                         enableVerticalRendering: false,
-                         columnSettings: [
-                             {
-                                 columnKey: "ShipAddress",
-                                 classes: "ui-hidden-phone"
-                             },
-                             {
-                                 columnKey: "ShipCity",
-                                 classes: "ui-hidden-phone"
-                             }
-                         ]
-                     },
+                    //  {
+                    //      name: "Responsive",
+                    //      enableVerticalRendering: false,
+                    //      columnSettings: [
+                    //          {
+                    //              columnKey: "ShipAddress",
+                    //              classes: "ui-hidden-phone"
+                    //          },
+                    //          {
+                    //              columnKey: "ShipCity",
+                    //              classes: "ui-hidden-phone"
+                    //          }
+                    //      ]
+                    //  },
                      {
                         name: "Updating",
                         enableAddRow:true,
@@ -141,6 +141,14 @@ const generateTables = (obj) => {
                             { columnKey: "actMeas", editorOptions: { type: "string", disabled: false} },
                             { columnKey: "grade", editorOptions: { type: "string", disabled: false} },
                         ]
+                    },
+                    {
+                        name: "ColumnFixing",
+                        fixingDirection: "left",
+                        // columnFixing: function (evt, args) { 
+                        //     console.log(evt)
+                        //     console.log(args)
+                        //  }
                     }
                 ],
                 updateUrl : "http://mydomain.com/UpdateCustomer"
