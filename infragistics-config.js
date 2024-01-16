@@ -11,12 +11,22 @@ function generateTab(){
 const generateTables = (obj) => {
     const dataTable = JSON.parse(localStorage.getItem("firebase_data")); 
     const dataFiltered = JSON.parse(localStorage.getItem("firebase_data")).filter(a=>{if(obj.includes(a.id)){ return a}}); 
-    console.log(obj.includes('4'))
-    console.log(dataTable)
     var grid = $("#hierarchicalGrid")
+    if(dataFiltered.length <= 0){
+        $(grid).empty()
+        $("#div-btn-group").hide()
+        return 0;
+    }else{
+        $("#div-btn-group").show()
+    }
+    grid.on("iggriddatabound", function (event, ui) {
+        console.log(ui)
+    });
     grid.igHierarchicalGrid({
         width: "100%",
         autoGenerateColumns: false,
+        autoCommit:true,
+        aggregateTransactions:true,
         dataSource: dataFiltered,
         dataSourceType: "json",
         //caption: "Orders By Employee",
@@ -35,6 +45,13 @@ const generateTables = (obj) => {
                     }
                 ]
             },
+            {
+                name: "Selection",
+                mode: "cell",
+                multipleSelection: false,
+                touchDragSelect: false, // this is true by default
+                multipleCellSelectOnClick: false
+            }
             /*
             {
                 name: "Sorting",
@@ -63,6 +80,8 @@ const generateTables = (obj) => {
         columnLayouts: [
             {
                 key: "data",
+                autoCommit:true,
+                aggregateTransactions:true,
                 width: "100%",
                 autoGenerateColumns: false,
                 primaryKey: "haulingEq",
@@ -96,6 +115,20 @@ const generateTables = (obj) => {
                         name: "Updating",
                         enableAddRow:true,
                         editMode: "row",
+                        rowAdding: function(evt, ui) {
+                            console.log("SINI")
+                            console.log(ui,"added")
+                            ui.values.Details = []
+                            
+                        },
+                        editRowEnded: function(evt, ui) {
+                            var row = ui.owner.grid.dataSource.dataView()[ui.owner._rowIndex];
+                            console.log(ui,"edited")
+                            //alert("this is my id column, which is hidden: " + row.id);                  
+                        },
+                        rowDeleted: function(e, ui) {
+                            console.log(ui,"deleted")
+                        },
                         enableDeleteRow: true,
                         columnSettings: [
                             { columnKey: "haulingEq", editorOptions: { type: "string", disabled: false} },
@@ -115,9 +148,9 @@ const generateTables = (obj) => {
         ]
     });
   //expanding first parent row in the grid
-    var parentGrid = $("#hierarchicalGrid").igHierarchicalGrid("rootWidget"),
-    rowDomElement = parentGrid.rowAt(0);
-    $("#hierarchicalGrid").igHierarchicalGrid("expand", rowDomElement);
+    // var parentGrid = $("#hierarchicalGrid").igHierarchicalGrid("rootWidget"),
+    // rowDomElement = parentGrid.rowAt(0);
+    // $("#hierarchicalGrid").igHierarchicalGrid("expand", rowDomElement);
 
     function countSaoPauloValues(data) {
         var i, l = data.length, count = 0, elem;
@@ -139,18 +172,50 @@ const generateTables = (obj) => {
         }
         return count;
     }
+    $("document").on('iggridupdatingrowadded', '#hierarchicalGrid', function () {
+        console.log("MHASOOK")
+    })
 
-    $("#saveChanges").on('click',
-        function (e) {
-            console.log("MASUK")
-            console.log(grid.igGrid)
-            grid.igGrid("saveChanges", function saveSuccess() {
-                //loadingIndicator.hide();
-            });
-            //loadingIndicator.show();
-            //$("#undo").igButton("disable");
-            //$(this).igButton("disable");
-            return false;
-        }
-    );
+    // $("#saveChanges").on('click',
+    //     function (e) {
+    //         //console.log("MASUK")
+    //         //grid.commit()
+    //         // var childrens = grid.igHierarchicalGrid("allChildren");
+    //         // var allTransactions = [];
+            
+    //         // for (var i = 0; i < childrens.length; i++) {
+    //         // var trans = $(childrens[0]).data("igGrid").transactionsAsString();
+    //         // allTransactions.push(trans);
+    //         // }
+    //         // console.log(allTransactions)
+
+    //         var RowSelected = grid.igHierarchicalGrid("option");
+    //         console.log(RowSelected.dataSource)
+            
+            
+    //         // var oAllStoneTransactions = [];
+    //         // var oMaterialChildren = grid.igHierarchicalGrid("allChildren");
+    //         // console.log($(oMaterialChildren[0]).data("igGrid"))
+
+    //         // for(var i= 0; i < oMaterialChildren.length;i++){
+    //         //   var oStoneChild = $(oMaterialChildren[i]).data("igGrid").transactionsAsString();
+    //         //   oStoneChild = oStoneChild.replace("Width", "ParentID\":\"" + $(oMaterialChildren[i]).data("igGrid").element[0].id + "\", \"Width");
+    //         //   oStoneChild.parentId = $(oMaterialChildren[i]).data("igGrid").element[0].id;
+    //         //   console.log($(oMaterialChildren[i]).data("igGrid").element[0].id)
+    //         //   oAllStoneTransactions.push(oStoneChild);
+    //         // }
+
+    //         // console.log(oAllStoneTransactions[0])
+    //     }
+    // );
+
+    // $("#saveChanges").bind({
+    //     click: function (e) {
+    //         console.log("MASSSSUKKK")
+    //         console.log( $("#hierarchicalGrid").igHierarchicalGrid("dataSourceObject").Records)
+    //         $("#hierarchicalGrid").igHierarchicalGrid("saveChanges");
+
+    //        ;   
+    //     }    
+    // });
 }

@@ -53,13 +53,18 @@
 
     window.onload = dataRealtime;
 
-    const checkedData = (checkedId) => {
-        let userAcount = JSON.parse(sessionStorage.getItem('user-info'))
+    const checkedData = (checkedId,name) => {
         checkedId.forEach(a=>{
             update(ref(db,`Loading/${a}`),{
-                editor : userAcount.name
+                editor : name
             }).then(()=>{
                 console.log("Data Updated")
+                $('#liveToast').show(0).delay(2000).hide(0);
+                if(name == ""){
+                    $("#liveToast #toast-message").text("Data has been submitted")
+                }else{
+                    $("#liveToast #toast-message").text("Data has been checked")
+                }
             }).catch((err)=>{
                 alert("Failed")
                 console.log(err)
@@ -68,6 +73,7 @@
     }
 
     const checkData = () => {
+        let userAcount = JSON.parse(sessionStorage.getItem('user-info'))
         let checkedId = []
         $(".tbl-CB tbody > tr").each(function(){
             let checked = $(this).find(".form-check-input").is(":checked")
@@ -77,8 +83,58 @@
             }
         })
         generateTables(checkedId)
-        checkedData(checkedId)
+        checkedData(checkedId,userAcount.name)
     }
 
     let cekData = document.getElementById("check-data")
     cekData.addEventListener('click',checkData)
+
+    const submitLoading =  () => {
+        let checkedId = []
+        $(".tbl-CB tbody > tr").each(function(){
+            let checked = $(this).find(".form-check-input").is(":checked")
+            if(checked){
+                let id = $(this).find(".id-box").text()
+                checkedId.push(Number(id))
+            }
+        })
+        checkedData(checkedId,"")
+        let empty = []
+        generateTables(empty)
+    }
+
+    let submitData = document.getElementById("submit-loading")
+    submitData.addEventListener('click',submitLoading)
+
+    const savedChange = () =>{
+        var grid = $("#hierarchicalGrid")
+        var RowSelected = grid.igHierarchicalGrid("option","dataSource");
+        if(RowSelected.length){
+            RowSelected.forEach(a=>{
+                update(ref(db,'Loading/'+a.id),
+                    a
+                ).then(()=>{
+                    $('#liveToast').show(0).delay(2000).hide(0);
+                    $("#liveToast #toast-message").text("Data has been saved")
+                }).catch((err)=>{
+                    console.log(err)
+                })
+            })
+        }
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.ctrlKey && e.key === 's') {
+            // Prevent the Save dialog to open
+            e.preventDefault();
+            // Place your code here
+            savedChange()
+            console.log('CTRL + S CLICKED');
+        }
+    });
+    
+
+    let saveChange = document.getElementById("saveChanges")
+    saveChange.addEventListener('click',savedChange)
+
+    
