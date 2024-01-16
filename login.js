@@ -93,3 +93,4 @@ const ValidateField = (field) => {
 
 let regis = document.getElementById("e_register")
 regis.addEventListener('click',SignIn)
+//regis.addEventListener('click',Register)

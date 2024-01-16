@@ -4,9 +4,12 @@ $(function () {
     if(userAcount == null){
         console.log("Masuk")
         window.location.href = "/login.html"
+    }else{
+        $("#account-signin").html(userAcount.name)
     }
 })
 const generateEditor = (obj) => {
+    let userAcount = JSON.parse(sessionStorage.getItem('user-info'))
     let data = []
     obj.forEach(a=>{
         data.push({
@@ -18,7 +21,7 @@ const generateEditor = (obj) => {
     let bodyCB = ``
     data.forEach(a=>{
         bodyCB += `<tr class="bg-light">
-                        <th scope="col" class="px-2" width="5%"><input class="form-check-input" type="checkbox" ${a.EDITOR ?'disabled' : ''}></th>
+                        <th scope="col" class="px-2" width="5%"><input class="form-check-input ${a.EDITOR ?'ck-readonly' : ''}" type="checkbox" ${userAcount.name == a.EDITOR ? 'checked' : ''} ></th>
                         <th scope="col" class="px-2 id-box" width="40%" style="display:none">${a.ID}</th>
                         <th scope="col" class="px-2" width="40%">${a.LOADING}</th>
                         <th scope="col" class="px-2" width="40%">${a.EDITOR}</th>
@@ -27,14 +30,11 @@ const generateEditor = (obj) => {
     $(".tbl-CB tbody").html(bodyCB)
 }
 
-const checkData = () => {
-    let checkedId = []
-    $(".tbl-CB tbody > tr").each(function(){
-        let checked = $(this).find(".form-check-input").is(":checked")
-        if(checked){
-            let id = $(this).find(".id-box").text()
-            checkedId.push(Number(id))
-        }
-    })
-    generateTables(checkedId)
+const onLogout = () =>{
+    sessionStorage.clear()
+    window.location.href = "/login.html"
 }
+
+$(':checkbox[readonly]').click(function(){
+    return false;
+});
