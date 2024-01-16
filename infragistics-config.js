@@ -226,4 +226,71 @@ const generateTables = (obj) => {
     //        ;   
     //     }    
     // });
+
+
+        /*----------------- Method & Option Examples(Hierarchical Grid) -------------------*/
+
+    //function for expanding/collapsing all rows on all levels in the igHierarhicalGrid
+    function expandCollapseRowsPerGrid($gridElement, action, level, callback) {
+        var _root = $gridElement.data("igHierarchicalGrid") || $gridElement.closest(".ui-iggrid-root").data("igHierarchicalGrid");
+        //get all rows in the grid that are not child grid container
+        var rows = $gridElement.children('tbody').find('>tr:not([data-container])');
+        var rowsCount = rows.find("span.ui-iggrid-expandbutton").length;
+        var gridChildElements = [];
+        var index = 0;
+        //Callback function used for the expand/collapse methods.
+        //Recursively loops through the child grids and calls expandCollapseRowsPerGrid for each.
+        var callbackFuncToggled = function (hGrid, $tr) {
+            var dataRowContainer, $trContainer = $tr.next('tr');
+            if ($trContainer.attr('data-container')) {
+                gridChildElements.push($trContainer.find('table[data-childgrid]'));
+            }
+            if (++index === rowsCount) {
+                $.each(gridChildElements, function (ind, elem) {
+                    expandCollapseRowsPerGrid(elem, action, level + 1, callback);
+                });
+                callback(gridChildElements, $tr, level)
+            }
+        };
+
+        rows.each(function (ind, row) {
+            var $row = $(row);
+            if ((_root.expanded($row) && action === 'expand') ||
+                    (_root.collapsed($row) && action === 'collapse')) {
+                callbackFuncToggled(_root, $row);
+            } else {
+                if (action === 'expand') {
+                    _root.expand($row, callbackFuncToggled)
+                } else {
+                    _root.collapse($row, callbackFuncToggled)
+                }
+            }
+        });
+    }
+
+    $("#buttonExpandAll").igButton({
+        labelText: $("#buttonExpandAll").val(),
+        click: function (event) {
+            expandCollapseRowsPerGrid($('#hierarchicalGrid'), 'expand', 0, function () { });
+        }
+    });
+
+    // $("#buttonExpandAll").on('click',
+    // function (e) {
+    //     expandCollapseRowsPerGrid($('#grid'), 'expand', 0, function () { });
+    // })
+    // $("#buttonCollapseAll").on('click',
+    // function (e) {
+    //     console.log("Collapse")
+    //     expandCollapseRowsPerGrid($('#grid'), 'collapse', 0, function () { });
+    // })
+
+    $("#buttonCollapseAll").igButton({
+        labelText: $("#buttonCollapseAll").val(),
+        click: function (event) {
+            expandCollapseRowsPerGrid($('#hierarchicalGrid'), 'collapse', 0, function () { });
+        }
+    });
 }
+
+
