@@ -716,13 +716,10 @@ var KOTA_DATA = [
     }
   ]
 
-  let provinsi = KOTA_DATA.map(e=>{
-    return {
-        name: e.provinsi,
-        id:e.provinsi
-    }
+let PROVINSI_DATA = KOTA_DATA.map(e=>{
+  return e.provinsi
 })
-  //console.log(provinsi)
+// console.log(provinsi)
 //   let xyz = KOTA_DATA[0].kota.map(e=>{
 //     return {
 //         kota:e

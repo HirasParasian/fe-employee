@@ -1,5 +1,6 @@
 $(function () {
     generateTab()
+    var PROVS_DATA = PROVINSI_DATA
 })
 function generateTab(){
     $('#new-tabs').tabs({
@@ -50,7 +51,23 @@ const generateTables = (obj) => {
                 mode: "cell",
                 multipleSelection: false,
                 touchDragSelect: false, // this is true by default
-                multipleCellSelectOnClick: false
+                multipleCellSelectOnClick: false,
+                cellSelectionChanged: function (evt, ui) {
+                    let rowId = ui.cell.rowId
+                    let provinsi = ui.owner.grid.tmpDataSource.filter(a=>{return a.haulingEq == rowId })[0].ProvinsiName
+                    console.log(provinsi)
+
+                    var childGrids = $('#hierarchicalGrid').igHierarchicalGrid('allChildren');
+                    let kota = KOTA_DATA.filter(e=>{
+                        if(e.provinsi == provinsi){
+                            return e.kota
+                        }
+                    })
+                    for (var i = 0; i < childGrids.length; i++) {
+                        var trans = $(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].editorOptions.dataSource = kota[0].kota
+                        console.log(trans)
+                    }
+                }
             }
             /*
             {
@@ -87,9 +104,21 @@ const generateTables = (obj) => {
                 primaryKey: "haulingEq",
                 columns: [
                     { key: "haulingEq", headerText: "Hauling Eq", dataType: "string", width: "200px" },
+                    { key: "ProvinsiName", headerText: "Provinsi", dataType: "string", width: "200px",cssClass:"cellProv" },
+                    { key: "CityName", headerText: "Kota", dataType: "string", width: "200px" },
                     { key: "operator", headerText: "Operator", dataType: "string", width: "200px", hidden: true },
-                    { key: "rit", headerText: "Rit", dataType: "string", width: "200px" },
-                    { key: "cap", headerText: "Cap", dataType: "string", width: "200px" },
+                    { key: "rit", headerText: "Qty", dataType: "numeric", width: "200px" },
+                    { key: "cap", headerText: "Price", dataType: "numeric", width: "200px" },
+                    { 
+                        headerText: "Total",
+                        key: "Total",
+                        dataType: "numeric",
+                        unbound: true,
+                        formula: function(row, grid) { 
+                            return Number(row.rit) + Number(row.cap); 
+                        },
+                        width:'200px'
+                    },
                     { key: "measurement", headerText: "Measurement", dataType: "string", width: "200px" },
                     { key: "measured", headerText: "Measured", dataType: "string", width: "200px" },
                     { key: "dest", headerText: "Dest", dataType: "string", width: "200px" },
@@ -114,7 +143,7 @@ const generateTables = (obj) => {
                      {
                         name: "Updating",
                         enableAddRow:true,
-                        editMode: "row",
+                        editMode: "cell",
                         rowAdding: function(evt, ui) {
                             console.log("SINI")
                             console.log(ui,"added")
@@ -132,6 +161,29 @@ const generateTables = (obj) => {
                         enableDeleteRow: true,
                         columnSettings: [
                             { columnKey: "haulingEq", editorOptions: { type: "string", disabled: false} },
+                            { 
+                                columnKey: "ProvinsiName",
+                                editorType: "combo",
+                                editorOptions: {
+                                    dataSource: PROVINSI_DATA,
+                                    selectionChanged: countryChanged
+                                },
+                            },
+                            { 
+                                columnKey: "CityName",
+                                editorType: "combo",
+                                editorOptions:{
+                                    checkValue: function (evt, ui) {
+                                        console.log(ui)
+                                    },
+                                    dataSource:null,
+                                }
+                                // editorOptions: {
+                                //     dataSource: KOTA_DATA.map(e=>{
+                                //         return e.provinsi
+                                //     }),
+                                // }
+                            },
                             { columnKey: "operator", editorOptions: { type: "string", disabled: false} },
                             { columnKey: "rit", editorOptions: { type: "string", disabled: false} },
                             { columnKey: "cap", editorOptions: { type: "string", disabled: false} },
@@ -140,16 +192,46 @@ const generateTables = (obj) => {
                             { columnKey: "dest", editorOptions: { type: "string", disabled: false} },
                             { columnKey: "actMeas", editorOptions: { type: "string", disabled: false} },
                             { columnKey: "grade", editorOptions: { type: "string", disabled: false} },
-                        ]
+                        ],
+                        // editCellStarting: function(evt, ui){
+						// 	cellToCompareVal = ui.owner.grid.getCellValue(ui.rowID, "ProvinsiName");
+                        //     console.log(ui)
+                        //     console.log(cellToCompareVal)
+                        //     return 0
+                        //     if(ui.columnKey == "CityName"){
+                        //         console.log("CITYY")
+                        //         var childGrids = $('#hierarchicalGrid').igHierarchicalGrid('allChildren');
+                        //         let kota = KOTA_DATA.filter(e=>{
+                        //             if(e.provinsi == cellToCompareVal){
+                        //                 return e.kota
+                        //             }
+                        //         })
+                        //         for (var i = 0; i < childGrids.length; i++) {
+                        //             var trans = $(childGrids[0]).data("igGrid").options.features[0].columnSettings[2].editorOptions.dataSource = kota[0].kota
+                        //             console.log(trans)
+                        //             //allTransactions.push(trans);
+                        //         }
+                        //     }
+						// 	// if(ui.columnKey == "FirstName" && cellToCompareVal !== "Sofia" ) {
+						// 	// 	return false;
+						// 	// }
+                        // }
                     },
-                    {
-                        name: "ColumnFixing",
-                        fixingDirection: "left",
-                        // columnFixing: function (evt, args) { 
-                        //     console.log(evt)
-                        //     console.log(args)
-                        //  }
-                    }
+                    // {
+                    //     name: "ColumnFixing",
+                    //     fixingDirection: "left",
+                    //     // columnFixing: function (evt, args) { 
+                    //     //     console.log(evt)
+                    //     //     console.log(args)
+                    //     //  }
+                    //     columnSettings: [
+                    //         {
+                    //             columnKey: "Total",
+                    //             isFixed: false,
+                    //             allowFixing: false,
+                    //         }
+                    //     ]
+                    // }
                 ],
                 updateUrl : "http://mydomain.com/UpdateCustomer"
             }
@@ -291,6 +373,104 @@ const generateTables = (obj) => {
             expandCollapseRowsPerGrid($('#hierarchicalGrid'), 'collapse', 0, function () { });
         }
     });
+}
+
+function countryChanged(evt, ui) {
+    console.log("MASUK")
+    drugchanged(evt, ui, "CityName");
+}
+  
+function cityChanged(evt, ui) {
+    selectionChanged(evt, ui, "Street");
+}
+
+function drugchanged(evt, ui, type) {
+
+    var childGrids = $('#hierarchicalGrid').igHierarchicalGrid('allChildren');
+
+    var provinsi = ui.items[0].data.text;
+    console.log(provinsi)
+    let kota = KOTA_DATA.filter(e=>{
+        if(e.provinsi == provinsi){
+            return e.kota
+        }
+    })
+    for (var i = 0; i < childGrids.length; i++) {
+        var trans = $(childGrids[0]).data("igGrid").options.features[0].columnSettings[2].editorOptions.dataSource.destroy()
+        var trans = $(childGrids[0]).data("igGrid").options.features[0].columnSettings[2].editorOptions.dataSource(kota[0].kota)
+        console.log(trans)
+        //allTransactions.push(trans);
+    }
+
+    //var editor = $("#hierarchicalGrid").igGridUpdating("editorForKey", "CityName").data("igCombo");
+    //console.log(editor)
+    // var drug;
+    
+    // for (i = 0; i < drugsJSON.length; i++) {
+    // drug = drugsJSON[i];
+    // if (drug.drugID == drugID) {
+    // break;
+    // }
+    // }
+    
+    // childGrids.each(function (index, grid) {
+    // if ($(grid).igGridUpdating('isEditing')) {
+    //     $(grid).igGridUpdating('editorForKey', 'DrugName').igTextEditor('value', drug.productName.trim());
+    // }
+    // });
+    
+}
+  
+function selectionChanged(evt, ui, type) {
+    var columnSettings = $("#hierarchicalGrid").igHierarchicalGrid("allChildren");
+    console.log(columnSettings)
+    var editor = $("#hierarchicalGrid").igGridUpdating("editorForKey", "ProvinsiName");
+
+    if (ui.items.length > 0) {
+        var place = ui.items[0].data.Value;
+        bindDataToCombo(editor, type, place);
+    } else {
+        editor.deselectAll({}, true);
+        editor.dataSource = [];
+        editor.dataBind();
+        editor.options.disabled = true;
+        // some attributes and css classes should be modified manually
+        editor.element.prop("disabled", true);
+        editor.element.addClass("ui-igCombo-disabled");
+        editor.element.closest(".ui-igcombo-wrapper").addClass("ui-igCombo-disabled ui-state-disabled");
+    }
+}
+  
+function bindDataToCombo(editor, type, place, selectedValue) {
+    var comboData;
+    switch (type) {
+        case 'City':
+        comboData = cities.filter(rec => rec.Country === place)
+        break;
+        case 'Street':
+        comboData = streets.filter(rec => rec.City === place)
+        break;
+    }
+    editor.deselectAll({}, true);
+    editor.options.dataSource = comboData;
+    editor.dataBind();
+    if (comboData.length > 0) {
+        editor.options.disabled = false;
+        // some attributes and css classes should be modified manually
+        editor.element.prop("disabled", false);
+        editor.element.removeClass("ui-igCombo-disabled");
+        editor.element.closest(".ui-igcombo-wrapper").removeClass("ui-igCombo-disabled ui-state-disabled");
+    } else {
+        editor.options.disabled = true;
+        // some attributes and css classes should be modified manually
+        editor.element.prop("disabled", true);
+        editor.element.addClass("ui-igCombo-disabled");
+        editor.element.closest(".ui-igcombo-wrapper").addClass("ui-igCombo-disabled ui-state-disabled");
+    }
+
+    if (selectedValue) {
+        editor.value(selectedValue);
+    }
 }
 
 
