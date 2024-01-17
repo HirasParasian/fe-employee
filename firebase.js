@@ -107,10 +107,14 @@
     submitData.addEventListener('click',submitLoading)
 
     const savedChange = () =>{
+        let userAcount = JSON.parse(sessionStorage.getItem('user-info'))
         var grid = $("#hierarchicalGrid")
         var RowSelected = grid.igHierarchicalGrid("option","dataSource");
+        
+        console.log(RowSelected)
         if(RowSelected.length){
             RowSelected.forEach(a=>{
+                a.editor = userAcount.name
                 update(ref(db,'Loading/'+a.id),
                     a
                 ).then(()=>{
