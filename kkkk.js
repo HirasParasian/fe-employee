@@ -444,7 +444,7 @@ $(function() {
   }
   
   function selectionChanged(evt, ui, type) {
-    var datac = 
+    var datac = "";
     var editor = $("#grid1").igGridUpdating("editorForKey", type).data("igCombo");
   
     if (ui.items.length > 0) {

@@ -115,7 +115,7 @@ const generateTables = (obj) => {
                         dataType: "numeric",
                         unbound: true,
                         formula: function(row, grid) { 
-                            return Number(row.rit) + Number(row.cap); 
+                            return Number(row.rit) * Number(row.cap); 
                         },
                         width:'200px'
                     },
