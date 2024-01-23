@@ -54,20 +54,36 @@ const generateTables = (obj) => {
                 multipleCellSelectOnClick: false,
                 cellSelectionChanged: function (evt, ui) {
                     let rowId = ui.cell.rowId
-                    let provinsi = ui.owner.grid.tmpDataSource.filter(a=>{return a.haulingEq == rowId })[0].ProvinsiName
-                    console.log(provinsi)
+                    let provinsi = ui.owner.grid.tmpDataSource.filter(a=>{return a.haulingEq == rowId })
+                    provinsi = provinsi.length?provinsi[0].ProvinsiName : ""
+                    //[0].ProvinsiName ?? ""
 
                     var childGrids = $('#hierarchicalGrid').igHierarchicalGrid('allChildren');
-                    let kota = KOTA_DATA.filter(e=>{
-                        if(e.provinsi == provinsi){
-                            return e.kota
+                    if(provinsi != ""){
+                        let kota = KOTA_DATA.filter(e=>{
+                            if(e.provinsi == provinsi){
+                                return e.kota
+                            }
+                        })
+                        console.log(kota)
+                        for (var i = 0; i < childGrids.length; i++) {
+                            // editor.deselectAll({}, true);
+                            // editor.dataSource = [];
+                            // editor.dataBind();
+                            // editor.options.disabled = true;
+                            //var transk = $(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].editorOptions.deselectAll({}, true);
+                            $(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].editorOptions.dataSource = []
+                            //$(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].dataBind()
+                            $(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].editorOptions.dataSource = kota[0].kota
+                            //$(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].dataBind()
                         }
-                    })
-                    for (var i = 0; i < childGrids.length; i++) {
-                        var trans = $(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].editorOptions.dataSource = kota[0].kota
-                        console.log(trans)
                     }
                 }
+            },
+            {
+                name: "Updating",
+                enableAddRow:false,
+                editMode: "cell",
             }
             /*
             {
@@ -107,12 +123,13 @@ const generateTables = (obj) => {
                     { key: "ProvinsiName", headerText: "Provinsi", dataType: "string", width: "200px",cssClass:"cellProv" },
                     { key: "CityName", headerText: "Kota", dataType: "string", width: "200px" },
                     { key: "operator", headerText: "Operator", dataType: "string", width: "200px", hidden: true },
-                    { key: "rit", headerText: "Qty", dataType: "numeric", width: "200px" },
-                    { key: "cap", headerText: "Price", dataType: "numeric", width: "200px" },
+                    { key: "rit", headerText: "Qty", dataType: "string", width: "200px" },
+                    { key: "cap", headerText: "Price", dataType: "string", width: "200px" },
                     { 
                         headerText: "Total",
                         key: "Total",
-                        dataType: "numeric",
+                        dataType: "string",
+                        readOnly:true,
                         unbound: true,
                         formula: function(row, grid) { 
                             return Number(row.rit) * Number(row.cap); 
@@ -166,16 +183,16 @@ const generateTables = (obj) => {
                                 editorType: "combo",
                                 editorOptions: {
                                     dataSource: PROVINSI_DATA,
-                                    selectionChanged: countryChanged
+                                    //selectionChanged: countryChanged
                                 },
                             },
                             { 
                                 columnKey: "CityName",
                                 editorType: "combo",
                                 editorOptions:{
-                                    checkValue: function (evt, ui) {
-                                        console.log(ui)
-                                    },
+                                    // checkValue: function (evt, ui) {
+                                    //     console.log(ui)
+                                    // },
                                     dataSource:null,
                                 }
                                 // editorOptions: {
@@ -237,6 +254,8 @@ const generateTables = (obj) => {
             }
         ]
     });
+
+    
   //expanding first parent row in the grid
     // var parentGrid = $("#hierarchicalGrid").igHierarchicalGrid("rootWidget"),
     // rowDomElement = parentGrid.rowAt(0);
@@ -396,7 +415,7 @@ function drugchanged(evt, ui, type) {
         }
     })
     for (var i = 0; i < childGrids.length; i++) {
-        var trans = $(childGrids[0]).data("igGrid").options.features[0].columnSettings[2].editorOptions.dataSource.destroy()
+        //var trans = $(childGrids[0]).data("igGrid").options.features[0].columnSettings[2].editorOptions.dataSource.destroy()
         var trans = $(childGrids[0]).data("igGrid").options.features[0].columnSettings[2].editorOptions.dataSource(kota[0].kota)
         console.log(trans)
         //allTransactions.push(trans);
