@@ -71,19 +71,22 @@ const generateTables = (obj) => {
                             console.log(kota[0].kota)
                             // console.log(childGrids)
                             for (var i = 0; i < childGrids.length; i++) {
+                                //console.log("TEST -------",i)
                                 //console.log($(childGrids[i]).data("igGridUpdating").options.columnSettings[2].editorOptions.dataSource = kota[0].kota)
                                 // editor.deselectAll({}, true);
                                 // editor.dataSource = [];
                                 // editor.dataBind();
                                 // editor.options.disabled = true;
                                 //var transk = $(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].editorOptions.deselectAll({}, true);
-                                // $(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].editorOptions.dataSource = ['Bekasi','Testing']
+                                //$(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].editorOptions.dataSource = ['Bekasi','Testing']
                                 //$(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].dataBind()
+                                //debugger
 
                                 //cuman bisa 1 kali ngisi dataSource
                                 //$(childGrids[i]).data("igGridUpdating").options.columnSettings[2].editorOptions.dataSource = kota[0].kota
                                 $(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].editorOptions.dataSource = kota[0].kota
-                                $(childGrids[i]).data("igGrid").commit();
+                                //console.log('tes ====>', kota[0])
+                                //$(childGrids[i]).data("igGrid").commit();
                                 //$(childGrids[i]).data("igGridUpdating").commit();
                                 //$(childGrids[i]).data("igGridUpdating").options.columnSettings[2].editorOptions.dataSource = ['Bekasi','Testing']
                                 //$(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].dataBind()
