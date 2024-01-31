@@ -149,6 +149,12 @@
                 lastFocused = focusedLAst
             }
             let ids = $(lastFocused).closest(".ui-iggrid-expandcolumn").closest("tr").attr("data-id")
+            if(ids == undefined){
+                let p = focusedLAst.closest("tbody").closest("tr")
+                let l = $(p).prev().attr("data-id")
+                ids = l
+                console.log(l)
+            }
             console.log(ids)
             $(`#ac_${ids} .ui-iggrid-addrow`).click()
             $(`#ac_${ids} .ui-iggrid-donebutton`).click()
