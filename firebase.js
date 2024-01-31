@@ -137,12 +137,21 @@
         }
     });
 
+    let lastFocused = null
     document.addEventListener('keydown', e => {
         if (e.ctrlKey && e.key === 'a') {
             // Prevent the Save dialog to open
             e.preventDefault();
-            $(".ui-iggrid-addrow").click()
-            $(".ui-iggrid-donebutton").click()
+            let focusedLAst = document.activeElement
+            let y = $(focusedLAst).context.toString()
+            console.log(focusedLAst)
+            if(focusedLAst != undefined && y != '[object HTMLBodyElement]'){
+                lastFocused = focusedLAst
+            }
+            let ids = $(lastFocused).closest(".ui-iggrid-expandcolumn").closest("tr").attr("data-id")
+            console.log(ids)
+            $(`#ac_${ids} .ui-iggrid-addrow`).click()
+            $(`#ac_${ids} .ui-iggrid-donebutton`).click()
             // Place your code here
             //savedChange()
             console.log('CTRL + N CLICKED');
