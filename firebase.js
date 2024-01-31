@@ -136,6 +136,18 @@
             console.log('CTRL + S CLICKED');
         }
     });
+
+    document.addEventListener('keydown', e => {
+        if (e.ctrlKey && e.key === 'a') {
+            // Prevent the Save dialog to open
+            e.preventDefault();
+            $(".ui-iggrid-addrow").click()
+            $(".ui-iggrid-donebutton").click()
+            // Place your code here
+            //savedChange()
+            console.log('CTRL + N CLICKED');
+        }
+    });
     
 
     let saveChange = document.getElementById("saveChanges")

@@ -69,28 +69,57 @@ const generateTables = (obj) => {
                             })
                             // console.log(kota)
                             console.log(kota[0].kota)
-                            // console.log(childGrids)
-                            for (var i = 0; i < childGrids.length; i++) {
-                                //console.log("TEST -------",i)
-                                //console.log($(childGrids[i]).data("igGridUpdating").options.columnSettings[2].editorOptions.dataSource = kota[0].kota)
-                                // editor.deselectAll({}, true);
-                                // editor.dataSource = [];
-                                // editor.dataBind();
-                                // editor.options.disabled = true;
-                                //var transk = $(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].editorOptions.deselectAll({}, true);
-                                //$(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].editorOptions.dataSource = ['Bekasi','Testing']
-                                //$(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].dataBind()
-                                //debugger
 
-                                //cuman bisa 1 kali ngisi dataSource
-                                //$(childGrids[i]).data("igGridUpdating").options.columnSettings[2].editorOptions.dataSource = kota[0].kota
-                                $(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].editorOptions.dataSource = kota[0].kota
-                                //console.log('tes ====>', kota[0])
-                                //$(childGrids[i]).data("igGrid").commit();
-                                //$(childGrids[i]).data("igGridUpdating").commit();
-                                //$(childGrids[i]).data("igGridUpdating").options.columnSettings[2].editorOptions.dataSource = ['Bekasi','Testing']
-                                //$(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].dataBind()
-                            }
+                            for (var i = 0; i < childGrids.length; i++) {
+                                $(childGrids[i]).data(
+                                  'igGrid'
+                                ).options.features[0].columnSettings[2].editorOptions.dataSource =
+                                  kota[0].kota;
+                
+                                x = $('.ui-igcombo-listitem[data-value*=Kab]');
+                                if (x) {
+                                  y = x.parent();
+                                  y.empty();
+                                  kota[0].kota.forEach((el) =>
+                                    y.append(
+                                      `<li class="ui-igcombo-listitem ui-state-default ui-unselectable" data-value="${el}" unselectable="on">${el}</li>`
+                                    )
+                                  );
+                
+                                  let index = $ig.util.widgetStack.findIndex(
+                                    (el) =>
+                                      el?.options?.dataSource?._data?.filter((el) =>
+                                        el?.text?.includes('Kab')
+                                      )?.length > 0
+                                  );
+                                  console.log('index widget stack', index);
+                
+                                  $ig.util.widgetStack[index].options.dataSource._data =
+                                    kota[0].kota.map((el) => ({ text: el, value: el }));
+                                }
+                              }
+                            // console.log(childGrids)
+                            // for (var i = 0; i < childGrids.length; i++) {
+                            //     //console.log("TEST -------",i)
+                            //     //console.log($(childGrids[i]).data("igGridUpdating").options.columnSettings[2].editorOptions.dataSource = kota[0].kota)
+                            //     // editor.deselectAll({}, true);
+                            //     // editor.dataSource = [];
+                            //     // editor.dataBind();
+                            //     // editor.options.disabled = true;
+                            //     //var transk = $(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].editorOptions.deselectAll({}, true);
+                            //     //$(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].editorOptions.dataSource = ['Bekasi','Testing']
+                            //     //$(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].dataBind()
+                            //     //debugger
+
+                            //     //cuman bisa 1 kali ngisi dataSource
+                            //     //$(childGrids[i]).data("igGridUpdating").options.columnSettings[2].editorOptions.dataSource = kota[0].kota
+                            //     $(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].editorOptions.dataSource = kota[0].kota
+                            //     //console.log('tes ====>', kota[0])
+                            //     //$(childGrids[i]).data("igGrid").commit();
+                            //     //$(childGrids[i]).data("igGridUpdating").commit();
+                            //     //$(childGrids[i]).data("igGridUpdating").options.columnSettings[2].editorOptions.dataSource = ['Bekasi','Testing']
+                            //     //$(childGrids[i]).data("igGrid").options.features[0].columnSettings[2].dataBind()
+                            // }
                         }
                     }
                 },
@@ -214,7 +243,8 @@ const generateTables = (obj) => {
                                         // checkValue: function (evt, ui) {
                                         //     console.log(ui)
                                         // },
-                                        dataSource:null,
+                                        //dataSource:null,
+                                        dataSource: KOTA_DATA[0].kota,
                                     }
                                     // editorOptions: {
                                     //     dataSource: KOTA_DATA.map(e=>{
@@ -520,4 +550,11 @@ function bindDataToCombo(editor, type, place, selectedValue) {
     }
 }
 
+
+function test(){
+    let li = '<li class="ui-igcombo-listitem ui-state-default ui-unselectable" data-value="Kota Bekasi" unselectable="on">Kota Bekasi</li>'
+    $(".ui-igcombo-listitemholder").html(li)
+
+
+}
 
