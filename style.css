@@ -1,0 +1,103 @@
+.bg-nav {
+  background-color: #9ac6f9;
+}
+
+.tog {
+  background-color: #092381;
+}
+
+.bg {
+  background-color: #ffffff;
+  font-family: Arial;
+}
+/* css career center start */
+.cc-img {
+  width: 32rem;
+  height: 30em;
+}
+
+.cc-bg {
+  background-color: #dbeafc;
+}
+
+.cc-border {
+  border-radius: 15px;
+}
+
+.cc-card {
+  height: 16rem;
+}
+
+.t-color {
+  color: #092381;
+}
+
+/* css caree center end */
+/* css pendaftaran start */
+
+.pd-bg {
+  background-color: #dbeafc;
+}
+
+.pd-border {
+  border-radius: 15px;
+}
+
+.pd-card {
+  height: 14rem;
+}
+
+/*css pendaftaran end */
+
+/* css tentangkami start */
+.xr {
+  height: 260px;
+}
+
+.xr1 {
+  height: 260px;
+}
+
+.tk-img {
+  height: 230px; 
+  width: 400px;
+}
+
+.bg-visi {
+  background-color: #dbeafc;
+}
+
+/* css tentang kami end */
+
+/* css civitas start */
+.cv-kaprodi-bg {
+  background-color: #dbeafc;
+}
+
+.cv-border {
+  border-radius: 5px;
+}
+
+/* css civitas end */
+
+/* css index start */
+
+/* css index end */
+
+
+.animation {
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
