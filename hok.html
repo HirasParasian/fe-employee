@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Preview</title>
+    <style>
+        .preview {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            max-width: 300px;
+            margin-top: 10px;
+        }
+        .preview img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Link Preview Example</h1>
+    <input type="text" id="urlInput" placeholder="Paste a URL here" style="width: 100%;">
+    <button onclick="generatePreview()">Get Preview</button>
+    <div id="previewContainer" class="preview"></div>
+
+    <script>
+        async function fetchMetadata(url) {
+            try {
+                // Mengambil konten HTML dari URL
+                const response = await fetch(url);
+                const text = await response.text();
+
+                // Parsing HTML untuk mendapatkan metadata
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(text, 'text/html');
+
+                // Mengambil metadata dari tag meta
+                const title = doc.querySelector('meta[property="og:title"]')?.getAttribute('content') || doc.title;
+                const description = doc.querySelector('meta[property="og:description"]')?.getAttribute('content') || '';
+                const image = doc.querySelector('meta[property="og:image"]')?.getAttribute('content') || '';
+
+                return { title, description, image };
+            } catch (error) {
+                console.error('Error fetching metadata:', error);
+                return { title: 'Error', description: 'Unable to fetch metadata', image: '' };
+            }
+        }
+
+        async function generatePreview() {
+            const url = document.getElementById('urlInput').value;
+            const previewContainer = document.getElementById('previewContainer');
+
+            if (!url) {
+                previewContainer.innerHTML = '<p>Please enter a URL.</p>';
+                return;
+            }
+
+            // Mengambil metadata dan membangun preview
+            const metadata = await fetchMetadata(url);
+
+            // Membangun HTML preview
+            previewContainer.innerHTML = `
+                <h3>${metadata.title}</h3>
+                <p>${metadata.description}</p>
+                ${metadata.image ? `<img src="${metadata.image}" alt="Image Preview">` : ''}
+            `;
+        }
+    </script>
+</body>
+</html>
